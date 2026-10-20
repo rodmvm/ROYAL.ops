@@ -66,6 +66,7 @@ function syncCopilot(){
   slot.inert=!workspacePrefs.copilot;slot.setAttribute('aria-hidden',String(!workspacePrefs.copilot));
   shell.querySelectorAll('[data-workspace="copilot"]').forEach(button=>{button.setAttribute('aria-controls','royal-copilot-panel');button.setAttribute('aria-expanded',String(workspacePrefs.copilot));});
   shell.querySelector('.nav [data-workspace="copilot"]')?.classList.toggle('copilot-active',workspacePrefs.copilot);
+  if(typeof syncResponsiveWorkspace==='function')syncResponsiveWorkspace();
 }
 function setCopilotOpen(open){
   const slot=document.querySelector('.copilot-slot');
@@ -74,13 +75,13 @@ function setCopilotOpen(open){
 }
 function showWorkspaceOverlay(html){
   overlayRevision++;const overlay=document.querySelector('#overlay');workspaceAnimations.get(overlay)?.cancel();overlay.innerHTML=html;overlay.inert=false;overlay.style.opacity='1';
-  document.body.style.overflow='hidden';fadeWorkspace(overlay,0,1,260);overlay.querySelector('button,input')?.focus();
+  document.body.style.overflow='hidden';if(typeof syncResponsiveWorkspace==='function')syncResponsiveWorkspace();fadeWorkspace(overlay,0,1,260);overlay.querySelector('button,input')?.focus();
 }
 async function hideWorkspaceOverlay(){
   const overlay=document.querySelector('#overlay');if(!overlay.firstElementChild)return;
   const revision=++overlayRevision,ref=focusReturn;selectedShipment=null;overlay.inert=true;
   await fadeWorkspace(overlay,getComputedStyle(overlay).opacity,0,180);
   if(revision!==overlayRevision)return;
-  overlay.replaceChildren();overlay.inert=false;overlay.style.opacity='1';document.body.style.overflow='';
+  overlay.replaceChildren();overlay.inert=false;overlay.style.opacity='1';document.body.style.overflow='';if(typeof syncResponsiveWorkspace==='function')syncResponsiveWorkspace();
   if(ref?.isConnected)ref.focus({preventScroll:true});
 }

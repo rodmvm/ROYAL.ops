@@ -1,0 +1,407 @@
+/* Device layouts: phone <=767, tablet 768–1199, laptop 1200–1439,
+   desktop >=1440. Copilot docks only when the workspace has room for it. */
+:root{--workspace-gutter:32px;--viewport-height:100dvh;--viewport-top:0px}
+html{scroll-padding-bottom:100px}
+body{min-width:0}
+#app .main,#app .content,#app .pagehead>div,#app .studio-heading>div{min-width:0}
+#app .content{width:100%;margin-inline:auto}
+#app .actions{flex-wrap:wrap;max-width:100%}
+#app .btn{white-space:normal;text-align:center;line-height:1.4;min-height:40px}
+#app .pagehead p{max-width:72ch}
+#app .tabs{max-width:100%;overscroll-behavior-x:contain;scrollbar-width:thin}
+#app .tablewrap{max-width:100%;overscroll-behavior-x:contain}
+#app td{overflow-wrap:anywhere}
+#app .rail-short,#app .mobile-more,.conversation-back{display:none}
+@media(min-width:768px){#app .studio .nav button.mobile-more{display:none!important}}
+.copilot-backdrop{display:none}
+#app .copilot-slot{height:calc(100dvh - 32px)}
+#app .copilot-messages{min-height:0}
+#app .copilot-header>div{min-width:0}
+#app .copilot-header small{white-space:normal;line-height:1.5}
+.drawer,.modal{overscroll-behavior:contain}
+.drawer-content,.modalbody,.detail-grid,.form-grid,.detail-block{min-width:0}
+.detail-block dd,.audit,.bubble,.ai-answer,.document-preview{overflow-wrap:anywhere}
+.modalhead,.drawer-title{gap:12px}
+.modalhead h2,.drawer-title h2{overflow-wrap:anywhere}
+.modalfoot{position:sticky;bottom:0;background:var(--solid);z-index:3;flex-wrap:wrap}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.more-grid button{min-height:90px;border:1px solid var(--line);background:var(--solid);border-radius:16px;padding:16px;display:flex;align-items:center;gap:12px;text-align:left;font-size:14px}
+.more-grid .icon{color:var(--blue);width:24px;height:24px}
+.responsive-hint{font-size:12px;color:var(--muted);line-height:1.6}
+/* A laptop has full-width operations; the assistant is a modal side sheet. */
+@media(max-width:1439px){
+ #app .studio.shell,#app .studio.shell.with-copilot{grid-template-columns:82px minmax(0,1fr) 0}
+ #app .studio.shell.rail-expanded,#app .studio.shell.rail-expanded.with-copilot{grid-template-columns:225px minmax(0,1fr) 0}
+ #app .studio{--sidebar-expanded-width:205px}
+ #app .studio .content,#app .studio.with-copilot .content{padding:12px var(--workspace-gutter) 28px}
+ #app .studio .topbar,#app .studio.with-copilot .topbar{height:80px;padding-inline:var(--workspace-gutter)}
+ #app .studio .sidebar{left:12px;width:64px}
+ #app .studio.rail-expanded .sidebar{width:205px}
+ #app .studio .copilot-top{display:inline-flex;min-height:44px;min-width:44px;justify-content:center}
+ #app .studio .copilot-slot{position:fixed;inset:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) auto auto;width:min(420px,calc(100vw - 32px));height:calc(var(--viewport-height) - 24px);z-index:45;overflow:visible;pointer-events:none}
+ #app .studio.with-copilot .copilot-slot{pointer-events:auto}
+ #app .studio .copilot-slot .copilot-panel{position:relative;inset:auto;width:100%;height:100%;margin:0;max-width:none;box-shadow:0 18px 80px #0005;background:var(--solid);z-index:1}
+ #app .with-copilot .copilot-backdrop{display:block;position:fixed;inset:0;background:#00163255;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);cursor:default}
+ #app .studio .copilot-header{padding:16px;gap:8px}
+ #app .studio .ai-icon-button{width:44px;height:44px;flex-shrink:0}
+ #app .copilot-header>div:first-child{flex:1}
+ #app .copilot-header>div:last-child{flex-shrink:0;gap:0}
+ #app .copilot-header>div>span>b{font-size:13px}
+ #app .copilot-header small{font-size:10px}
+ #app .ai-context-strip{font-size:11px}
+ #app .ai-context-strip>span:last-child{font-size:9px}
+ #app .copilot-welcome{padding-top:20px}
+ #app .copilot-welcome h2{font-size:23px}
+ #app .copilot-welcome>p{font-size:13px}
+ #app .ai-prompts button,#app .ai-action{font-size:12px;min-height:54px}
+ #app .assistant-scope,#app .copilot-composer>p,#app .ai-citation{font-size:10px}
+ #app .copilot-composer textarea{font-size:16px}
+ #app .copilot-composer form>button{width:44px;height:44px}
+ #app .ai-answer,#app .ai-answer>p,#app .ai-user-message,#app .ai-draft p{font-size:13px}
+ #app .ai-source{font-size:12px;min-height:44px}
+ #app .studio-heading{display:flex;align-items:flex-end;flex-wrap:wrap}
+ #app .studio-heading .actions{margin-top:0}
+ #app .studio-kpis,#app .with-copilot .studio-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+ #app .bento-grid,#app .with-copilot .bento-grid,#app .rail-expanded .bento-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+ #app .shipment-widget,#app .with-copilot .shipment-widget{grid-column:1/-1}
+ #app .studio .settings-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #app .studio .comm-layout{grid-template-columns:240px minmax(0,1fr);min-height:540px}
+ #app .studio .thread-list{max-height:680px;overflow:auto;border-right:1px solid var(--line);border-bottom:0}
+ #app .studio .pagehead{display:flex;align-items:flex-end;flex-wrap:wrap}
+ #app .studio .pagehead .actions{margin-top:0}
+ #app .studio .breadcrumb{display:flex;min-width:0;font-size:12px}
+ #app .studio .breadcrumb strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ #app .studio .topactions{min-width:0;width:auto;justify-content:flex-end;margin-left:auto}
+ #app .studio .command-search{min-width:0;width:clamp(160px,24vw,290px);max-width:290px!important}
+ #app .studio .topbar .iconbtn{width:40px;height:40px;flex-shrink:0}
+}
+/* Labelled, fixed-width rail gives portrait and landscape tablets equal space. */
+@media(min-width:768px) and (max-width:1199px){
+ :root{--workspace-gutter:24px}
+ #app .studio.shell,#app .studio.shell.with-copilot,#app .studio.shell.rail-expanded,#app .studio.shell.rail-expanded.with-copilot{grid-template-columns:96px minmax(0,1fr) 0;transition:none}
+ #app .studio .sidebar,#app .studio.rail-expanded .sidebar{left:10px;top:12px;bottom:12px;width:78px;padding:10px 5px;border-radius:24px;gap:6px}
+ #app .studio .rail-brand,#app .studio.rail-expanded .rail-brand{display:flex;width:100%;height:52px;min-height:52px;padding:0;margin:0 0 8px}
+ #app .studio .rail-brand .official-mark{display:block;opacity:1;transform:translate(-50%,-50%);width:36px;height:auto}
+ #app .studio .rail-brand .official-wordmark,#app .studio .rail-toggle{display:none}
+ #app .studio .nav{width:100%;min-height:0;overflow-y:auto;overflow-x:hidden;gap:5px;align-items:center;flex:1;scrollbar-width:none}
+ #app .studio .nav button,#app .studio.rail-expanded .nav button:not(.mobile-settings){display:flex;flex-direction:column;grid-template-columns:none;align-items:center;justify-content:center;gap:5px;padding:8px 2px;width:64px;height:62px;min-height:62px;flex-shrink:0;text-align:center;border-radius:15px}
+ #app .studio .nav button>span:not(.rail-short),#app .studio .nav button>em{display:none!important}
+ #app .studio .nav button>.rail-short{display:block!important;width:100%;max-width:100%;opacity:1;overflow:visible;transform:none;font-size:9px;line-height:1.25;text-align:center;white-space:normal;pointer-events:none}
+ #app .studio .nav .icon{width:22px;height:22px}
+ #app .studio .rail-separator{height:1px;width:48px;min-height:1px;margin:5px}
+ #app .studio .rail-bottom{width:100%;gap:4px;align-items:center;flex-shrink:0}
+ #app .studio .rail-settings{display:flex;justify-content:center;width:52px;height:44px;padding:0}
+ #app .studio .rail-profile{display:flex;justify-content:center;width:52px;padding:4px}
+ #app .studio .rail-settings>span,#app .studio .rail-profile>span:last-child{display:none}
+ #app .studio .rail-profile>.avatar{width:30px;height:30px}
+ #app .studio .nav button.mobile-settings{display:none}
+ #app .studio .topbar{height:76px;gap:12px}
+ #app .studio .topbar .iconbtn{width:44px;height:44px}
+ #app .studio .content{padding-top:14px}
+ #app .studio .btn,#app .tabs button,#app .atlas-mode-tabs button{min-height:44px;font-size:12px}
+ #app .studio-heading h1,#app .studio .pagehead h1{font-size:28px}
+ #app .studio-heading p,#app .studio .pagehead p{font-size:13px;line-height:1.6}
+ #app .widget-header h2{font-size:14px}
+ #app .widget-header p,#app .widget-footer,#app .mini-kpi small,#app .mini-kpi p{font-size:11px}
+ #app .mini-kpi{padding:16px 14px}
+ #app .mini-kpi strong{font-size:25px}
+ #app .compact-deadlines{padding-inline:16px}
+ #app .deadline-item b{font-size:12px}
+ #app .deadline-item small{font-size:10px}
+ #app .tool-count>span,#app .channel-dots p{font-size:12px}
+ #app .studio .settings-grid{gap:16px}
+ #app .setting-card p{font-size:13px}
+ #app .thread strong,#app .conversation-head h3{font-size:14px}
+ #app .thread p,#app .comm-channel-label{font-size:12px}
+ #app .message{font-size:13px}
+ #app .conversation-head{padding:18px}
+ #app .studio .channel-tabs button{min-height:44px;font-size:12px}
+ #app .studio .channel-toolbar{padding:12px}
+ #app .channel-toolbar .channel-tabs{flex-basis:100%!important;width:100%}
+ #app .channel-toolbar #comm-order{margin-left:auto}
+ #app .studio .rule{gap:12px}
+ #app .rule h3{font-size:14px}
+ #app .rule p,#app .audit{font-size:12px}
+ #app .studio .switch{width:44px;height:28px;padding:4px}
+ #app .switch:before{width:20px;height:20px}
+ #app .switch.on:before{transform:translateX(16px)}
+}
+@media(max-width:1199px){
+ #app .studio-kpis,#app .with-copilot .studio-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #app .studio .deadline-row{display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:start;gap:14px;padding:20px}
+ #app .studio .deadline-row>div:nth-child(3){display:block;grid-column:2;grid-row:2}
+ #app .studio .deadline-row>div:nth-child(4){display:block;grid-column:2;grid-row:3}
+ #app .studio .deadline-row>.actions{grid-column:3;grid-row:1/4;align-self:center}
+ #app .deadline-row h3{font-size:14px;overflow-wrap:anywhere}
+ #app .deadline-row p,#app .mini-label{font-size:12px;line-height:1.6}
+ #app .deadline-row .big-value{font-size:16px}
+ #app .callout{font-size:13px;align-items:flex-start}
+ #app .callout>.icon{flex-shrink:0;margin-top:3px}
+ .field{font-size:12px}
+ .field input,.field select,.field textarea,.composer textarea{font-size:16px!important;min-height:46px}
+ .drawer{width:min(680px,90vw);height:var(--viewport-height)}
+ .drawer-head{padding:24px}
+ .drawer-content{padding:24px}
+ .detail-block h3{font-size:13px}
+ .detail-block dl{font-size:12px}
+ .modal-wrap{padding:24px;height:var(--viewport-height);top:var(--viewport-top);bottom:auto}
+ .modal{width:680px;max-height:calc(var(--viewport-height) - 48px)}
+ .modalfoot .btn,.modalhead .iconbtn,.drawer-head .iconbtn,.detail-actions .btn{min-height:44px;min-width:44px}
+ #toasts{bottom:24px;right:16px;max-width:calc(100vw - 32px)}
+}
+/* Preserve every table field as labelled cards, rather than hiding columns. */
+@media(max-width:1023px){
+ #app .responsive-table{overflow:visible}
+ #app .responsive-table table,#app .responsive-table tbody{display:block;width:100%}
+ #app .responsive-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ #app .responsive-table tbody{display:grid;grid-template-columns:1fr;gap:12px;padding:14px}
+ #app .responsive-table tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--solid);position:relative}
+ #app .responsive-table td{display:block;padding:0!important;white-space:normal;font-size:13px;border:0;min-width:0;line-height:1.5}
+ #app .responsive-table td::before{content:attr(data-label);display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+ #app .responsive-table td strong{font-size:14px}
+ #app .responsive-table td small{font-size:11px;line-height:1.5}
+ #app .responsive-table td:first-child{grid-column:1/-1;padding-right:25px!important}
+ #app .responsive-table tr[data-shipment]>td:last-child{position:absolute;right:16px;top:22px}
+ #app .responsive-table tr[data-shipment]>td:last-child::before{display:none}
+ #app .responsive-table td[colspan]{grid-column:1/-1;padding:4px!important}
+ #app .responsive-table td[colspan]::before{display:none}
+ #app .responsive-table .route{font-size:13px}
+ #app .responsive-table .badge{white-space:normal;font-size:11px;line-height:1.4}
+ #app .responsive-table .empty{padding:20px 8px}
+ #app .responsive-table .empty h3{font-size:17px}
+ #app .responsive-table .empty p{font-size:13px;line-height:1.6}
+}
+/* On touch-sized workspaces the globe comes first, with swipeable routes below.
+   The scene still blends into the page, without a constraining card border. */
+@media(max-width:1199px){
+ #app .studio.atlas-workspace .main{background:radial-gradient(ellipse at 65% 27%,#dfeef8 0,var(--bg) 65%)}
+ .dark #app .studio.atlas-workspace .main{background:radial-gradient(ellipse at 65% 27%,#123e5b 0,var(--bg) 65%)}
+ #app .studio.atlas-workspace .content{display:block;height:auto;min-height:0;padding-bottom:24px}
+ #app .atlas-workspace .shipment-atlas{display:flex;flex-direction:column;gap:16px}
+ #app .atlas-workspace .content>.pagehead{margin-bottom:20px;pointer-events:auto}
+ #app .atlas-workspace .atlas-toolbar{width:100%;max-width:100%;padding:8px 12px;gap:10px}
+ #app .atlas-workspace .atlas-mode-tabs{overflow-x:auto;min-width:0;max-width:100%}
+ #app .atlas-workspace .atlas-delivered-toggle{min-height:36px;font-size:12px;margin-left:auto}
+ #app .atlas-workspace .atlas-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding:0;pointer-events:none}
+ #app .atlas-workspace .atlas-right{display:contents}
+ #app .atlas-workspace .atlas-stage{position:relative;inset:auto;grid-row:1;--atlas-globe-y:50%;height:clamp(350px,52dvh,560px);width:calc(100% + 2 * var(--workspace-gutter));margin-inline:calc(-1 * var(--workspace-gutter));background:none;border-radius:0;pointer-events:auto}
+ #app .atlas-workspace #atlas-overlay{touch-action:pan-y}
+ #app .atlas-workspace .atlas-list{grid-row:2;max-height:none;height:auto;min-height:0}
+ #app .atlas-workspace .atlas-list-heading{padding:16px;display:grid;grid-template-columns:1fr minmax(180px,1fr);align-items:center;gap:18px}
+ #app .atlas-workspace .atlas-list-heading h2{margin:0;font-size:14px}
+ #app .atlas-workspace .atlas-search{min-height:44px}
+ #app .atlas-workspace .atlas-search input{font-size:14px}
+ #app .atlas-workspace .atlas-route-list{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;padding:0 16px 16px;max-height:none;flex:auto;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+ #app .atlas-workspace .atlas-route-card{flex:0 0 224px;width:224px;min-width:224px;margin:0;padding:16px;scroll-snap-align:start}
+ #app .atlas-workspace .atlas-route-card-top b{font-size:12px}
+ #app .atlas-workspace .atlas-city-pair{font-size:12px}
+ #app .atlas-workspace .atlas-route-meta small{font-size:10px}
+ #app .atlas-workspace .atlas-route-meta .badge{font-size:9px}
+ #app .atlas-workspace .atlas-list-footer{display:none}
+ #app .atlas-workspace .atlas-detail{grid-row:3;width:100%;max-width:none;max-height:none;overflow:visible;margin:0;padding:20px;pointer-events:auto}
+ #app .atlas-workspace .atlas-detail-meta{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+ #app .atlas-workspace .atlas-detail-deadline{grid-column:auto}
+ #app .atlas-workspace .atlas-detail-top h2{font-size:18px}
+ #app .atlas-workspace .atlas-detail-route b,#app .atlas-workspace .atlas-detail-meta b{font-size:14px}
+ #app .atlas-workspace .atlas-detail-meta small,#app .atlas-workspace .atlas-detail-route small{font-size:12px}
+ #app .atlas-workspace .atlas-detail-meta em{font-size:11px;line-height:1.6}
+ #app .atlas-workspace .atlas-map-heading{top:10px;left:var(--workspace-gutter);right:auto;text-align:left}
+ #app .atlas-workspace .atlas-map-heading>span{justify-content:flex-start;font-size:12px}
+ #app .atlas-workspace .atlas-map-heading small{font-size:8px}
+ #app .atlas-workspace .atlas-map-top-actions{top:8px;right:var(--workspace-gutter)}
+ #app .atlas-workspace .atlas-map-controls{top:80px;bottom:auto;right:var(--workspace-gutter);gap:8px}
+ #app .atlas-workspace .atlas-map-top-actions button,#app .atlas-workspace .atlas-map-controls button{width:44px;height:44px}
+ #app .atlas-workspace .atlas-orientation{top:auto;bottom:18px;left:var(--workspace-gutter)}
+ #app .atlas-workspace .atlas-route-legend{top:auto;bottom:68px;left:var(--workspace-gutter);right:auto;font-size:10px}
+ #app .atlas-workspace .atlas-orientation small{font-size:10px;max-width:260px}
+ #app .atlas-workspace .atlas-map-status{top:70px;bottom:auto;left:var(--workspace-gutter);right:85px}
+ #app .atlas-workspace .atlas-footnote{width:100%;max-width:none;font-size:10px;line-height:1.6}
+ #app .atlas-workspace .atlas-stage:fullscreen{position:fixed;inset:0;width:100vw;height:100dvh;margin:0;z-index:50}
+}
+@media(max-width:900px) and (min-width:768px){
+ #app .studio .breadcrumb{display:none}
+ #app .studio .topactions{width:100%;gap:8px;justify-content:space-between}
+ #app .studio .command-search{flex:1;width:auto;max-width:none!important}
+ #app .studio .comm-layout{grid-template-columns:210px minmax(0,1fr)}
+ #app .messages{padding:16px}
+ #app .composer{padding:14px}
+ #app .conversation-head{align-items:flex-start;flex-wrap:wrap}
+ #app .composer-bottom{flex-direction:column;align-items:stretch}
+ #app .studio .settings-grid{grid-template-columns:1fr}
+}
+/* A landscape tablet can compare routes beside the globe; portrait stacks them. */
+@media(min-width:1024px) and (max-width:1199px) and (orientation:landscape){
+ #app .atlas-workspace .atlas-layout{grid-template-columns:220px minmax(0,1fr)}
+ #app .atlas-workspace .atlas-stage{grid-column:2;grid-row:1;width:100%;margin:0;height:440px}
+ #app .atlas-workspace .atlas-list{grid-column:1;grid-row:1;height:440px;max-height:440px}
+ #app .atlas-workspace .atlas-list-heading{grid-template-columns:1fr;padding:14px;gap:12px}
+ #app .atlas-workspace .atlas-route-list{display:block;overflow-x:hidden;overflow-y:auto;padding:0 10px 10px;flex:1;min-height:0}
+ #app .atlas-workspace .atlas-route-card{width:100%;min-width:0;margin:0 0 10px;padding:13px}
+ #app .atlas-workspace .atlas-detail{grid-column:1/-1;grid-row:2}
+ #app .atlas-workspace .atlas-map-heading{left:10px}
+ #app .atlas-workspace .atlas-map-top-actions,#app .atlas-workspace .atlas-map-controls{right:6px}
+ #app .atlas-workspace .atlas-route-legend,#app .atlas-workspace .atlas-orientation{left:10px}
+}
+/* Phone navigation and single-purpose screens. No compressed desktop rail. */
+@media(max-width:767px){
+ :root{--workspace-gutter:16px}
+ #app .studio.shell,#app .studio.shell.with-copilot,#app .studio.shell.rail-expanded,#app .studio.shell.rail-expanded.with-copilot{grid-template-columns:minmax(0,1fr);padding-bottom:calc(88px + env(safe-area-inset-bottom));transition:none}
+ #app .studio .main{grid-column:1}
+ #app .studio .sidebar,#app .studio.rail-expanded .sidebar{position:fixed;inset:auto max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));height:72px;width:auto;display:block;padding:6px;border-radius:22px;z-index:30}
+ #app .studio .rail-brand,#app .studio .rail-toggle,#app .studio .rail-bottom,#app .studio .rail-separator{display:none!important}
+ #app .studio .nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));height:60px;gap:3px;width:100%;align-items:center}
+ #app .studio .nav button,#app .studio.rail-expanded .nav button{width:100%;height:58px;min-width:0;padding:7px 1px;display:none!important;flex-direction:column;justify-content:center;align-items:center;gap:5px;text-align:center;border-radius:15px;white-space:normal}
+ #app .studio .nav button[data-nav=overview],#app .studio .nav button[data-nav=shipments],#app .studio .nav button[data-nav=deadlines],#app .studio .nav button[data-nav=communications],#app .studio .nav button.mobile-more{display:flex!important}
+ #app .studio .nav button>span,#app .studio .nav button>em{display:none!important}
+ #app .studio .nav button>.rail-short{display:block!important;width:100%;max-width:100%;opacity:1;transform:none;font-size:10px;line-height:1.2;white-space:normal;text-align:center;overflow:visible}
+ #app .studio .nav button>.icon{width:22px;height:22px}
+ #app .studio .nav button.mobile-more.active{background:var(--bluebg);color:var(--blue)}
+ #app .studio .topbar,#app .studio.with-copilot .topbar{height:76px;padding:8px 16px;gap:8px}
+ #app .studio .breadcrumb{display:none}
+ #app .studio .topactions{width:100%;gap:4px;justify-content:space-between}
+ #app .studio .command-search{flex:1;min-width:0;max-width:none!important;width:auto;padding:10px;min-height:44px}
+ #app .studio .command-search input{font-size:16px}
+ #app .command-search kbd{display:none}
+ #app .studio .topbar .iconbtn,#app .studio .copilot-top{width:44px;height:44px;min-width:44px;flex-shrink:0}
+ #app .studio .copilot-top>span:last-child{display:none}
+ #app .studio .topbar .notification{display:none}
+ #app .studio .topactions .lang{font-size:11px}
+ #app .studio .content,#app .studio.with-copilot .content{padding:8px 16px 24px}
+ #app .studio-heading,#app .studio .pagehead{display:flex;align-items:flex-start;flex-direction:column;gap:16px;margin:6px 0 22px}
+ #app .studio-heading h1,#app .studio .pagehead h1{font-size:clamp(24px,6.8vw,30px);letter-spacing:-.8px;line-height:1.25}
+ #app .studio-heading p,#app .studio .pagehead p{font-size:13px;line-height:1.65}
+ #app .studio-eyebrow{font-size:8px;letter-spacing:1px;gap:8px;flex-wrap:wrap}
+ #app .studio-heading .actions,#app .studio .pagehead .actions{margin:0;width:100%;gap:8px;align-items:stretch}
+ #app .studio-heading .actions>.btn{flex:1}
+ #app .studio .btn,#app .studio .btn.small{font-size:12px;min-height:44px;padding:11px 12px}
+ #app .bento-grid,#app .with-copilot .bento-grid,#app .rail-expanded .bento-grid{grid-template-columns:minmax(0,1fr);gap:16px}
+ #app .studio-kpis,#app .with-copilot .studio-kpis{gap:10px}
+ #app .mini-kpi{padding:14px 11px;gap:8px}
+ #app .mini-kpi p{font-size:11px}
+ #app .mini-kpi strong{font-size:24px}
+ #app .mini-kpi small{font-size:10px;line-height:1.5}
+ #app .mini-kpi .kpi-icon{width:24px;height:24px}
+ #app .widget-header h2{font-size:15px}
+ #app .widget-header p,#app .widget-footer{font-size:11px}
+ #app .deadline-item{padding-block:15px;flex-wrap:wrap}
+ #app .deadline-item b{font-size:12px}
+ #app .deadline-item small{font-size:10px}
+ #app .deadline-due{flex:1;text-align:right}
+ #app .tool-count>span,#app .channel-dots p{font-size:12px}
+ #app .tool-actions{align-items:stretch}
+ #app .tool-actions .btn{flex:1}
+ #app .mini-assist{width:44px;height:44px}
+ #app .studio .settings-grid{grid-template-columns:minmax(0,1fr)}
+ #app .setting-card p,#app .setting-card small{font-size:13px}
+ #app .audit{font-size:12px}
+ #app .studio .tabs{padding-inline:10px}
+ #app .tabs button{min-height:44px;font-size:12px}
+ #app .toolbar{padding:12px;gap:12px}
+ #app .toolbar select{min-height:44px;font-size:14px;max-width:100%}
+ #app .toolbar .searchbox{width:100%;min-width:0}
+ #app .searchbox input{min-width:0;font-size:16px}
+ #app .studio .deadline-row{grid-template-columns:32px minmax(0,1fr);padding:16px;gap:12px}
+ #app .studio .deadline-row>.actions{grid-column:2;grid-row:4;align-self:start;justify-content:flex-start}
+ #app .studio .deadline-row h3{font-size:14px}
+ #app .rule{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
+ #app .rule .roundicon{display:none}
+ #app .rule h3{font-size:14px;line-height:1.5}
+ #app .rule p{font-size:12px;line-height:1.7}
+ #app .studio .switch{width:44px;height:28px;padding:4px}
+ #app .switch:before{width:20px;height:20px}
+ #app .switch.on:before{transform:translateX(16px)}
+ #app .studio .comm-layout{display:block;min-height:0}
+ #app .studio .thread-list{display:block;max-height:none;border:0}
+ #app .thread{padding:18px}
+ #app .thread strong{font-size:14px}
+ #app .thread p,#app .thread-top{font-size:12px}
+ #app .studio .conversation{display:none}
+ #app .communication-hub[data-mobile-thread=open] .thread-list{display:none}
+ #app .communication-hub[data-mobile-thread=open] .conversation{display:flex;min-height:480px}
+ #app .conversation-back{display:inline-flex;align-items:center;gap:4px;min-height:44px;font-size:12px;color:var(--channel-ink);flex-basis:100%;padding:0;margin-bottom:4px}
+ #app .conversation-back .icon{transform:rotate(180deg);width:16px}
+ #app .conversation-head{padding:12px 16px;flex-wrap:wrap}
+ #app .conversation-head h3{font-size:15px}
+ #app .conversation-head p,#app .comm-channel-label{font-size:12px}
+ #app .conversation-head>.linkbtn{min-height:44px}
+ #app .messages{max-height:55dvh;padding:16px;min-height:180px}
+ #app .message{font-size:14px;max-width:92%}
+ #app .message small{font-size:11px}
+ #app .composer{padding:14px}
+ #app .composer-bottom{flex-direction:column;align-items:stretch;gap:10px}
+ #app .composer-bottom small{font-size:11px;line-height:1.5}
+ #app .channel-toolbar .channel-tabs{flex-basis:100%!important;overflow-x:auto;width:100%}
+ #app .studio .channel-tabs button{font-size:12px;min-height:44px;gap:6px}
+ #app .channel-toolbar #comm-order{margin-left:auto;width:auto}
+ #app .studio .copilot-slot{inset:var(--viewport-top) 0 auto;width:100%;height:var(--viewport-height);max-width:none}
+ #app .studio .copilot-slot .copilot-panel{border-radius:0;border:0;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+ #app .copilot-messages{padding:16px}
+ #app .copilot-welcome h2{font-size:24px}
+ #app .copilot-welcome>p{font-size:14px}
+ .modal-wrap{inset:var(--viewport-top) 0 auto;height:var(--viewport-height);padding:0;align-items:stretch}
+ .modal,.drawer{width:100%;max-width:100%;height:var(--viewport-height);max-height:var(--viewport-height);border-radius:0;border:0;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+ .modalhead,.drawer-head{padding:16px;position:sticky;top:0;background:var(--solid);z-index:4}
+ .modalhead h2,.drawer-title h2{font-size:21px}
+ .modalbody,.drawer-content{padding:20px 16px}
+ .modalfoot{padding:16px;gap:10px}
+ .modalfoot .btn{flex:1;min-height:46px}
+ .form-grid,.detail-grid{grid-template-columns:minmax(0,1fr)}
+ .detail-full,.field.full{grid-column:1}
+ .detail-block{padding:16px}
+ .detail-block dl{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+ .detail-block dt{margin:0}
+ .detail-block dd{text-align:right}
+ .routevisual .endpoints{font-size:13px;gap:16px}
+ .routevisual .endpoints>*{min-width:0}
+ .document-preview{padding:16px}
+ .document-preview table{display:block;overflow-x:auto}
+ .more-grid{gap:12px}
+ #toasts{bottom:calc(94px + env(safe-area-inset-bottom));right:16px;left:16px;max-width:none}
+ #app .atlas-workspace .atlas-layout{gap:16px}
+ #app .atlas-workspace .atlas-list-heading{grid-template-columns:1fr;gap:12px}
+ #app .atlas-workspace .atlas-search input{font-size:16px}
+ #app .atlas-workspace .atlas-mode-tabs{width:100%;justify-content:space-between;gap:0}
+ #app .atlas-workspace .atlas-mode-tabs button{font-size:11px;min-height:44px;padding:8px;gap:5px}
+ #app .atlas-workspace .atlas-stage{height:420px;--atlas-globe-y:48%}
+ #app .atlas-workspace .atlas-map-heading{top:8px;max-width:160px}
+ #app .atlas-workspace .atlas-map-heading small{font-size:6px;line-height:1.5}
+ #app .atlas-workspace .atlas-map-heading>span{font-size:11px}
+ #app .atlas-workspace .atlas-map-top-actions{top:8px;gap:5px}
+ #app .atlas-workspace .atlas-route-legend{bottom:60px;max-width:calc(100% - 90px);gap:10px;padding:9px;font-size:9px}
+ #app .atlas-workspace .atlas-detail{padding:16px}
+ #app .atlas-workspace .atlas-detail-route{grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);gap:10px}
+ #app .atlas-workspace .atlas-detail-route b{font-size:13px;overflow-wrap:anywhere}
+ #app .atlas-workspace .atlas-detail-meta{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ #app .atlas-workspace .atlas-detail-deadline{grid-column:1/-1}
+ #app .atlas-workspace .atlas-detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ #app .atlas-workspace .atlas-detail-actions .btn:first-child{grid-column:1/-1}
+ #app .atlas-workspace .atlas-detail-actions .btn.small{font-size:12px!important;padding:10px!important}
+}
+@media(max-width:374px){
+ #app .studio .topbar{padding-inline:12px}
+ #app .mini-kpi{display:block}
+ #app .mini-kpi .kpi-icon{margin-bottom:9px}
+ #app .studio .topactions{gap:2px}
+ #app .studio .topbar .iconbtn,#app .studio .copilot-top{width:42px;min-width:42px}
+ #app .atlas-mode-tabs button .icon{display:none}
+}
+@media(max-height:600px) and (min-width:768px){
+ #app .studio .sidebar{top:6px;bottom:6px}
+ #app .studio .rail-brand{min-height:36px;height:36px;margin-bottom:0}
+ #app .studio .rail-profile{display:none}
+ #app .studio .nav{overflow-y:auto;min-height:0}
+ #app .studio .copilot-welcome{padding-top:0}
+ #app .studio .copilot-welcome>.ai-orb{display:none}
+}
+@media(max-height:740px) and (min-width:768px){#app .studio .nav{min-height:0;overflow-y:auto;overflow-x:hidden;flex:1}}
+@media(max-width:1199px){
+ #app .widget-arrow,#app .pulse-bottom button{width:44px;height:44px}
+ #app .linkbtn,#app .insight-ask,#app .rail-profile{min-height:44px}
+ #app .studio .switch{position:relative;width:44px;height:44px;padding:0;background:transparent}
+ #app .studio .switch:after{content:'';position:absolute;inset:8px 0;background:var(--line);border-radius:20px}
+ #app .studio .switch.on:after{background:var(--royal-steel)}
+ #app .studio .switch:before{position:absolute;z-index:1;left:4px;top:12px;width:20px;height:20px}
+ #app .studio .switch.on:before{transform:translateX(16px)}
+}
+@media(prefers-reduced-motion:reduce){#app .studio.shell,#app .studio .sidebar,#app .studio .copilot-slot,#app .studio .copilot-panel{transition:none!important}}
+@media print{#app .sidebar,#app .copilot-slot{display:none!important}.modalfoot,.modalhead .iconbtn{display:none!important}}
