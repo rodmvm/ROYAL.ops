@@ -53,6 +53,6 @@ function aiModeChart(records){return `<div class="ai-result-chart" role="img" ar
 document.addEventListener('pointerdown',event=>{
  const control=event.target.closest('.studio button:not(:disabled),#overlay .btn:not(:disabled)');
  if(!control||reduceWorkspaceMotion()||event.button!==0||!control.animate)return;
- if(control.closest('.atlas-stage')||control.matches('.rail-toggle'))return;
+ if(control.closest('.atlas-stage,.tabs,.atlas-mode-tabs,.atlas-view-switch')||control.matches('.rail-toggle'))return;
  control.animate([{opacity:.72},{opacity:1}],{duration:240,easing:'cubic-bezier(.2,.7,.2,1)'});
 });

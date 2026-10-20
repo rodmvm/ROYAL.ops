@@ -1,0 +1,15 @@
+/* Main-page changes fade; local selections keep their labels and slide the indicator. */
+.local-sliding-tabs{position:relative;isolation:isolate}
+.local-sliding-tabs>.local-tab-indicator{position:absolute;display:block;left:0;bottom:0;height:2px;background:var(--channel-accent,var(--blue));pointer-events:none;z-index:0}
+.local-sliding-tabs>button{position:relative;z-index:1}
+#app .tabs.local-sliding-tabs>button,#overlay .tabs.local-sliding-tabs>button{border-bottom-color:transparent}
+#app :is(.atlas-view-switch,.atlas-mode-tabs).local-sliding-tabs>.local-tab-indicator{top:4px;bottom:4px;height:auto;border-radius:8px;background:var(--bluebg)}
+#app :is(.atlas-view-switch,.atlas-mode-tabs).local-sliding-tabs>button.active{background:transparent}
+#app .channel-tabs.local-sliding-tabs>.local-tab-indicator{top:0;bottom:0;height:auto;border-radius:9px;background:var(--channel-strong)}
+#app .channel-tabs.local-sliding-tabs>button.active{background:transparent;border-color:transparent;box-shadow:none}
+#app .studio .copilot-slot .copilot-panel{opacity:1;transform:translateX(28px);transition:transform 220ms cubic-bezier(.2,.7,.2,1)}
+#app .studio.with-copilot .copilot-slot .copilot-panel{opacity:1;transform:translateX(0);transition-delay:0s}
+#app .studio.shell{transition-duration:240ms}
+#app .studio .copilot-slot{transition:visibility 0s 240ms}
+#app .studio.with-copilot .copilot-slot{transition-delay:0s}
+@media(prefers-reduced-motion:reduce){#app .studio .copilot-slot .copilot-panel{transition:none!important;transform:none}}

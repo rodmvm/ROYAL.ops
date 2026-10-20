@@ -20,11 +20,11 @@ function cancelWorkspaceNavigation(){
 async function navigateWorkspace(destination){
   const revision=++navigationRevision,content=document.querySelector('.studio .content');
   const keyboard=document.activeElement?.matches('[data-nav]')&&document.activeElement.matches(':focus-visible');
-  if(content){const opacity=getComputedStyle(content).opacity;content.inert=true;content.setAttribute('aria-busy','true');content.dataset.motionPhase='exiting';await fadeWorkspace(content,opacity,0,160);}
+  if(content){const opacity=getComputedStyle(content).opacity;content.inert=true;content.setAttribute('aria-busy','true');content.dataset.motionPhase='exiting';await fadeWorkspace(content,opacity,0,80);}
   if(revision!==navigationRevision)return false;
   view=destination;render({navigation:true});window.scrollTo({top:0,behavior:'instant'});
   const next=document.querySelector('.studio .content');next.inert=false;next.removeAttribute('aria-busy');next.dataset.motionPhase='entering';
-  await fadeWorkspace(next,0,1,300);
+  await fadeWorkspace(next,0,1,160);
   if(revision!==navigationRevision)return false;
   delete next.dataset.motionPhase;
   if(keyboard){const heading=next.querySelector('h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}
@@ -97,13 +97,16 @@ function setCopilotOpen(open){
   workspacePrefs.copilot=open;saveWorkspace();syncCopilot();
 }
 function showWorkspaceOverlay(html){
-  overlayRevision++;const overlay=document.querySelector('#overlay');workspaceAnimations.get(overlay)?.cancel();overlay.innerHTML=html;overlay.inert=false;overlay.style.opacity='1';
-  document.body.style.overflow='hidden';if(typeof syncResponsiveWorkspace==='function')syncResponsiveWorkspace();fadeWorkspace(overlay,0,1,260);overlay.querySelector('button,input')?.focus();
+  overlayRevision++;const overlay=document.querySelector('#overlay');workspaceAnimations.get(overlay)?.cancel();
+  workspaceAnimations.get(overlay.querySelector('.drawer,.modal'))?.cancel();
+  if(typeof updateShipmentDrawer==='function'&&updateShipmentDrawer(overlay,html))return;
+  overlay.innerHTML=html;overlay.inert=false;overlay.style.opacity='1';
+  document.body.style.overflow='hidden';if(typeof syncResponsiveWorkspace==='function')syncResponsiveWorkspace();slideWorkspace(overlay.querySelector('.drawer,.modal')||overlay,28,0,180);if(typeof syncLocalNavigation==='function')syncLocalNavigation();overlay.querySelector('button,input')?.focus();
 }
 async function hideWorkspaceOverlay(){
   const overlay=document.querySelector('#overlay');if(!overlay.firstElementChild)return;
   const revision=++overlayRevision,ref=focusReturn;selectedShipment=null;overlay.inert=true;
-  await fadeWorkspace(overlay,getComputedStyle(overlay).opacity,0,180);
+  await slideWorkspace(overlay.querySelector('.drawer,.modal')||overlay,0,28,140);
   if(revision!==overlayRevision)return;
   overlay.replaceChildren();overlay.inert=false;overlay.style.opacity='1';document.body.style.overflow='';if(typeof syncResponsiveWorkspace==='function')syncResponsiveWorkspace();
   if(ref?.isConnected)ref.focus({preventScroll:true});
