@@ -1,0 +1,42 @@
+/* Quiet, visible screen context and ROYAL Copilot's violet orb droid. */
+:root{--copilot-violet:#6f2da8;--copilot-ink:#6f2da8;--copilot-tint:#f1e9f8}
+body.dark{--copilot-ink:#c7a2ed;--copilot-tint:#6f2da826}
+#app .studio .concise-heading{margin-top:2px;margin-bottom:18px;gap:14px;align-items:center}
+#app .studio .pagehead.concise-heading h1,#app .studio .studio-heading.concise-heading h1{font:700 21px 'Manrope',sans-serif;line-height:1.35;letter-spacing:-.35px;margin:0 0 5px}
+#app .studio .concise-heading p.page-context{font-size:12px;line-height:1.6;margin:0;max-width:72ch;color:var(--muted)}
+#app .workspace-snapshot{display:block;font-size:10px;line-height:1.5;color:var(--muted);margin-top:4px}
+#app .studio .concise-heading .actions{margin-top:0}
+#app .studio.atlas-workspace .content>.pagehead{margin-bottom:16px}
+#app .studio .pulse-card h2{font-size:17px;line-height:1.5;letter-spacing:-.2px;max-width:94%;margin:16px 0 7px}
+#app .studio .pulse-card>p{font-size:11px;line-height:1.6}
+#app .studio .insight-statement{font-size:16px;line-height:1.5;letter-spacing:-.2px}
+#app .studio .callout{font-size:12px;line-height:1.65}
+#app .studio .empty h3{font-size:16px;line-height:1.5}
+#app .ai-orb{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;min-width:0;max-width:none;background:none;border:0;border-radius:0;box-shadow:none;gap:0;padding:0;overflow:visible}
+#app .ai-orb img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none}
+#app .ai-orb.small{width:32px;height:32px;background:none;box-shadow:none}
+#app .copilot-welcome>.ai-orb{width:112px;height:112px;filter:drop-shadow(0 6px 12px #6f2da824)}
+#app .copilot-welcome{padding-top:22px}
+#app .copilot-welcome h2{font-size:21px;line-height:1.4;margin:13px 8px 8px;letter-spacing:-.3px}
+#app .copilot-welcome>p{font-size:13px;line-height:1.7;margin:0 8px 22px}
+#app .copilot-header .ai-orb{width:36px;height:36px}
+#app .widget-header .ai-orb{width:30px;height:30px}
+#app .ai-answer-label .ai-orb{width:28px;height:28px}
+#app .studio.shell .nav button>.ai-orb.small{display:inline-flex!important;visibility:visible;opacity:1;min-width:24px;width:24px;height:24px;max-width:24px;transform:none;overflow:visible;grid-column:1;justify-self:center;pointer-events:none}
+#app .studio .nav button.copilot-active{background:var(--copilot-tint);color:var(--copilot-ink)}
+#app .studio .copilot-top{color:var(--copilot-ink)}
+#app .studio .copilot-top .ai-orb{width:32px;height:32px}
+#app .studio .copilot-composer form>button{background:var(--copilot-violet);color:#fff}
+#app .studio .copilot-composer form:focus-within{border-color:var(--copilot-ink)}
+#app .studio .ai-prompts .icon,#app .studio .ai-source{color:var(--copilot-ink)}
+#app .studio .ai-source,#app .studio .mini-assist,#app .studio .insight-ask{background:var(--copilot-tint);color:var(--copilot-ink)}
+#app .studio .ai-prompts button:hover,#app .studio .ai-action:hover{background:var(--copilot-tint);border-color:var(--copilot-ink)}
+#app .studio .ai-context-strip>span:last-child{color:var(--copilot-ink)}
+@media(max-width:1439px){#app .copilot-welcome{padding-top:14px}}
+@media(max-width:767px){
+ #app .studio .concise-heading{align-items:flex-start;gap:12px;margin-bottom:18px}
+ #app .studio .pagehead.concise-heading h1,#app .studio .studio-heading.concise-heading h1{font-size:20px}
+ #app .studio .concise-heading p.page-context{font-size:12px}
+ #app .copilot-welcome>.ai-orb{width:104px;height:104px}
+}
+@media(max-height:600px){#app .studio .copilot-welcome>.ai-orb{display:inline-flex;width:64px;height:64px}#app .copilot-welcome{padding-top:0}#app .copilot-welcome h2{margin-top:6px}}
