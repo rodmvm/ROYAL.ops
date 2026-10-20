@@ -60,3 +60,6 @@
  .studio.rail-expanded .rail-profile small{line-height:1.35}
 }
 @media(min-width:601px) and (max-width:1280px){.studio.rail-expanded .sidebar{--sidebar-label-size:10px}}
+
+/* ROYAL Sharp keeps the greeting accent aligned with the shared icon family. */
+.greeting-spark .icon{width:24px;height:24px;vertical-align:baseline}
