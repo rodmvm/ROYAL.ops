@@ -45,6 +45,29 @@ function morphWorkspace(current,next){
     i++;
   }
 }
+// Keep earlier turns mounted. Animate only the new question or completed answer.
+function syncAssistantMessages(current,next){
+  current.setAttribute('aria-busy',next.getAttribute('aria-busy')||'false');
+  const wanted=new Set([...next.children].map(node=>node.dataset.aiKey));
+  for(const node of [...current.children])if(!wanted.has(node.dataset.aiKey))node.remove();
+  for(const incoming of [...next.children]){
+    let existing=[...current.children].find(node=>node.dataset.aiKey===incoming.dataset.aiKey);
+    if(!existing){
+      existing=incoming.cloneNode(true);current.append(existing);
+      fadeWorkspace(existing.querySelector('.ai-user-message')||existing,0,1,260);
+    }else if(existing.innerHTML!==incoming.innerHTML){
+      const resolved=existing.dataset.aiState==='thinking'&&incoming.dataset.aiState==='ready';
+      morphWorkspace(existing,incoming);
+      if(resolved)fadeWorkspace(existing.querySelector('.ai-answer-content'),0,1,360);
+    }
+  }
+  const panel=current.closest('.copilot-panel');
+  if(panel){
+    const busy=next.getAttribute('aria-busy')==='true';
+    panel.dataset.assistantState=busy?'thinking':current.querySelector('.ai-turn')?'ready':'idle';
+    panel.querySelectorAll('[data-ai-intent],[data-ai-draft-for]').forEach(button=>button.disabled=busy);
+  }
+}
 function updateWorkspaceDOM(replaceContent=true){
   const root=document.querySelector('#app'),shell=root.querySelector('.studio.shell');
   if(!shell){root.innerHTML=workspaceShell();syncCopilot();return;}
@@ -57,7 +80,7 @@ function updateWorkspaceDOM(replaceContent=true){
   const panel=shell.querySelector('.copilot-panel'),nextPanel=next.querySelector('.copilot-panel');
   for(const selector of ['.copilot-header','.ai-context-strip','.copilot-composer'])morphWorkspace(panel.querySelector(selector),nextPanel.querySelector(selector));
   const messages=panel.querySelector('.copilot-messages'),nextMessages=nextPanel.querySelector('.copilot-messages');
-  if(messages.innerHTML!==nextMessages.innerHTML){messages.replaceChildren(...nextMessages.childNodes);fadeWorkspace(messages,0,1,260);scrollAssistant();}
+  syncAssistantMessages(messages,nextMessages);
   syncCopilot();
 }
 function syncCopilot(){

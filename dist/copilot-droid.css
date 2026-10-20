@@ -40,3 +40,37 @@ body.dark{--copilot-ink:#c7a2ed;--copilot-tint:#6f2da826}
  #app .copilot-welcome>.ai-orb{width:104px;height:104px}
 }
 @media(max-height:600px){#app .studio .copilot-welcome>.ai-orb{display:inline-flex;width:64px;height:64px}#app .copilot-welcome{padding-top:0}#app .copilot-welcome h2{margin-top:6px}}
+
+/* Purposeful, low-amplitude motion: greeting, focus, processing and response. */
+#app .ai-orb img{transform-origin:50% 58%;transition:filter 300ms ease,transform 360ms cubic-bezier(.2,.7,.2,1)}
+#app .with-copilot .copilot-welcome>.ai-orb img{animation:copilot-greet 800ms cubic-bezier(.2,.7,.2,1) both}
+#app .copilot-welcome>.ai-orb:hover img{transform:translateY(-3px) rotate(-3deg);filter:drop-shadow(0 4px 12px #6f2da844)}
+#app .copilot-panel[data-assistant-state="thinking"] .copilot-header .ai-orb img,
+#app .ai-turn[data-ai-state="thinking"] .ai-answer-label .ai-orb img{animation:copilot-process 900ms ease-in-out infinite alternate}
+#app .copilot-panel:has(#copilot-input:focus) .copilot-header .ai-orb img{filter:drop-shadow(0 0 5px #a971df70)}
+#app .ai-turn{display:flow-root}
+#app .ai-turn[data-ai-state="ready"] .ai-answer-label .ai-orb img{animation:copilot-acknowledge 600ms ease-out both}
+#app .ai-thinking{display:flex;align-items:center;gap:10px;min-height:44px;color:var(--muted);font-size:12px;line-height:1.6}
+#app .ai-thinking-dots{display:inline-flex;align-items:center;gap:4px;height:18px}
+#app .ai-thinking-dots i{display:block;width:5px;height:5px;background:var(--copilot-ink);border-radius:50%;animation:copilot-dot 900ms ease-in-out infinite}
+#app .ai-thinking-dots i:nth-child(2){animation-delay:120ms}
+#app .ai-thinking-dots i:nth-child(3){animation-delay:240ms}
+#app .ai-answer-content>*{animation:copilot-detail-in 320ms ease-out both}
+#app .ai-answer-content>:nth-child(2){animation-delay:45ms}
+#app .ai-answer-content>:nth-child(3){animation-delay:85ms}
+#app .ai-answer-content>:nth-child(n+4){animation-delay:120ms}
+#app .studio :is(.ai-prompts button,.ai-next-prompts button,.ai-action,.ai-source,.iconbtn,.atlas-route,.tab,.switch,.linkbtn,.widget-arrow,.deadline-item,.copilot-composer form,.copilot-composer button){transition:background-color 240ms ease,border-color 240ms ease,color 240ms ease,box-shadow 280ms ease,opacity 240ms ease}
+#app .studio button:disabled{cursor:wait;opacity:.6}
+#app .studio .copilot-composer button:disabled{opacity:.65}
+#app .studio .copilot-composer form:focus-within{box-shadow:0 0 0 3px #6f2da816}
+#app .studio :is(.ai-prompts button,.ai-action,.ai-next-prompts button):focus-visible{outline:2px solid var(--copilot-ink);outline-offset:3px}
+#app .studio .copilot-panel{will-change:opacity}
+@keyframes copilot-greet{0%{opacity:0;transform:translateY(6px) scale(.94) rotate(-5deg)}65%{opacity:1;transform:translateY(-2px) scale(1.015) rotate(2deg)}100%{opacity:1;transform:none}}
+@keyframes copilot-process{from{transform:translateY(1px) rotate(-4deg);filter:drop-shadow(0 0 2px #6f2da826)}to{transform:translateY(-2px) rotate(4deg);filter:drop-shadow(0 0 6px #a971df80)}}
+@keyframes copilot-acknowledge{0%{transform:scale(.94)}45%{transform:scale(1.08) rotate(4deg)}100%{transform:none}}
+@keyframes copilot-dot{0%,70%,100%{opacity:.35;transform:translateY(0)}35%{opacity:1;transform:translateY(-3px)}}
+@keyframes copilot-detail-in{from{opacity:0}to{opacity:1}}
+@media(hover:hover){#app .studio :is(.ai-source,.ai-next-prompts button,.iconbtn,.widget-arrow):hover{box-shadow:0 2px 10px #0016320d}}
+@media(prefers-reduced-motion:reduce){
+ #app .studio *,#app .studio *:before,#app .studio *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
