@@ -1,0 +1,39 @@
+/* The third grid track always exists, so Copilot can resize without a layout snap. */
+.studio.shell{--copilot-width:322px;--workspace-ease:cubic-bezier(.4,0,.2,1);grid-template-columns:82px minmax(0,1fr) 0;transition:grid-template-columns 440ms var(--workspace-ease)}
+.studio.shell.with-copilot{grid-template-columns:82px minmax(0,1fr) var(--copilot-width)}
+.studio.shell.rail-expanded{grid-template-columns:calc(var(--sidebar-expanded-width) + 20px) minmax(0,1fr) 0}
+.studio.shell.rail-expanded.with-copilot{grid-template-columns:calc(var(--sidebar-expanded-width) + 20px) minmax(0,1fr) var(--copilot-width)}
+.copilot-slot{grid-column:3;grid-row:1;min-width:0;align-self:start;position:sticky;top:16px;height:calc(100vh - 32px);overflow:hidden;visibility:hidden;transition:visibility 0s 440ms}
+.studio.with-copilot .copilot-slot{visibility:visible;transition-delay:0s}
+.studio .copilot-slot .copilot-panel{position:relative;inset:auto;top:0;grid-column:auto;width:calc(var(--copilot-width) - 16px);max-width:none;height:100%;margin:0 16px 0 0;opacity:0;transition:opacity 240ms var(--workspace-ease)}
+.studio.with-copilot .copilot-slot .copilot-panel{opacity:1;transition-duration:360ms;transition-delay:70ms}
+.studio .content{min-width:0}
+#overlay{position:relative;z-index:100}
+.studio .bento-card,.studio .mini-kpi{animation:none}
+.studio .btn,.studio .nav button,.studio .rail-toggle,.studio .ai-icon-button{transition-property:width,padding,gap,background-color,border-color,color,box-shadow,opacity;transition-duration:280ms;transition-timing-function:var(--workspace-ease)}
+.studio .btn:hover,.studio .nav button:hover,.studio .nav button:active,.studio .rail-settings:active{transform:none}
+#overlay .drawer,#overlay .modal,#toasts .toast{animation:none}
+.studio .sidebar{transition-duration:440ms;transition-timing-function:var(--workspace-ease)}
+@media(min-width:601px){.studio .nav button>span,.studio .rail-toggle>span,.studio .rail-settings>span,.studio .rail-profile>span:last-child{transform:none;transition:opacity 240ms var(--workspace-ease),max-width 440ms var(--workspace-ease)}}
+@media(min-width:1650px){.studio.shell{--copilot-width:360px}}
+@media(max-width:1280px){
+  .studio.shell{--copilot-width:294px;grid-template-columns:76px minmax(0,1fr) 0}
+  .studio.shell.with-copilot{grid-template-columns:76px minmax(0,1fr) var(--copilot-width)}
+  .studio.shell.rail-expanded{grid-template-columns:190px minmax(0,1fr) 0}
+  .studio.shell.rail-expanded.with-copilot{grid-template-columns:190px minmax(0,1fr) var(--copilot-width)}
+}
+@media(max-width:1000px){
+  .studio.shell{--copilot-width:332px}
+  .studio.shell.with-copilot{grid-template-columns:76px minmax(0,1fr) 0}
+  .studio.shell.rail-expanded.with-copilot{grid-template-columns:190px minmax(0,1fr) 0}
+  .copilot-slot{position:fixed;top:13px;right:13px;width:316px;height:calc(100vh - 26px);z-index:22;pointer-events:none}
+  .studio.with-copilot .copilot-slot{pointer-events:auto}
+  .studio .copilot-slot .copilot-panel{width:100%;margin:0}
+  .studio .main>.content,.studio .main>.topbar{transition:padding-right 440ms var(--workspace-ease)}
+}
+@media(max-width:780px){.copilot-slot{width:calc(100% - 100px);max-width:370px;z-index:35}}
+@media(max-width:600px){
+  .studio.shell,.studio.shell.with-copilot,.studio.shell.rail-expanded,.studio.shell.rail-expanded.with-copilot{grid-template-columns:minmax(0,1fr)}
+  .copilot-slot{inset:10px 10px 77px;width:auto;max-width:none;height:auto;z-index:40}
+}
+@media(prefers-reduced-motion:reduce){.studio.shell,.studio .sidebar,.copilot-slot,.studio .copilot-slot .copilot-panel,.studio .main>.content,.studio .main>.topbar{transition:none!important}}

@@ -1,0 +1,33 @@
+/* Channel identity is separate from priority and operational-status colors. */
+.communication-hub [data-channel-tone]{--channel-ink:#235e91;--channel-accent:#1d70b7;--channel-surface:#e8f1fa;--channel-edge:#b8d2e9;--channel-strong:#1d70b7;--channel-on-strong:#fff;--channel-incoming:#f4f8fd}
+.communication-hub [data-channel-tone=whatsapp]{--channel-ink:#125b39;--channel-accent:#167c47;--channel-surface:#e2f5e8;--channel-edge:#a3d9b5;--channel-strong:#147d4a;--channel-incoming:#effaf2}
+.communication-hub [data-channel-tone=email]{--channel-ink:#1d5fa0;--channel-accent:#1d70b7;--channel-surface:#e4f0fd;--channel-edge:#adcce9;--channel-strong:#185f9e;--channel-incoming:#eff6fe}
+.communication-hub [data-channel-tone=sms]{--channel-ink:#6b46a1;--channel-accent:#7954ad;--channel-surface:#eee7fb;--channel-edge:#cbb9e6;--channel-strong:#654393;--channel-incoming:#f7f2ff}
+.communication-hub [data-channel-tone=phone]{--channel-ink:#006d70;--channel-accent:#007d83;--channel-surface:#ddf4f3;--channel-edge:#9bd7d4;--channel-strong:#00666d;--channel-incoming:#eefaf9}
+.dark .communication-hub [data-channel-tone]{--channel-ink:#acd2f5;--channel-accent:#82bceb;--channel-surface:#142d43;--channel-edge:#37546e;--channel-strong:#24557e;--channel-on-strong:#f2f8ff;--channel-incoming:#152a3d}
+.dark .communication-hub [data-channel-tone=whatsapp]{--channel-ink:#91e5b0;--channel-accent:#72d699;--channel-surface:#11352b;--channel-edge:#2b7654;--channel-strong:#165c3c;--channel-on-strong:#effff3;--channel-incoming:#142e26}
+.dark .communication-hub [data-channel-tone=email]{--channel-ink:#9acbff;--channel-accent:#80bfff;--channel-surface:#112e48;--channel-edge:#365d83;--channel-strong:#1b4d78;--channel-on-strong:#f2f8ff;--channel-incoming:#162b41}
+.dark .communication-hub [data-channel-tone=sms]{--channel-ink:#cbb5fa;--channel-accent:#bba0f1;--channel-surface:#2c2243;--channel-edge:#655183;--channel-strong:#543a7d;--channel-on-strong:#fbf6ff;--channel-incoming:#29223b}
+.dark .communication-hub [data-channel-tone=phone]{--channel-ink:#8de0df;--channel-accent:#6bd4d1;--channel-surface:#103436;--channel-edge:#286666;--channel-strong:#15575b;--channel-on-strong:#efffff;--channel-incoming:#142f32}
+.studio .communication-hub .channel-toolbar{background:linear-gradient(110deg,var(--channel-surface),color-mix(in srgb,var(--channel-surface) 60%,var(--solid)));border-top:3px solid var(--channel-accent);border-bottom-color:var(--channel-edge);transition:background-color 280ms ease,border-color 280ms ease}
+.channel-toolbar .channel-tabs{gap:5px;min-width:0;align-items:center;scrollbar-width:thin;scrollbar-color:var(--channel-edge) transparent}
+.studio .channel-tabs button{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid transparent;border-radius:9px;padding:10px;color:var(--muted);transition:background-color 220ms ease,color 220ms ease,border-color 220ms ease}
+.channel-tabs button .icon{width:14px;height:14px;flex-shrink:0;color:var(--channel-accent)}
+.studio .channel-tabs button:hover{background:var(--channel-surface);color:var(--channel-ink);border-color:var(--channel-edge)}
+.studio .channel-tabs button.active{background:var(--channel-strong);border-color:var(--channel-strong);color:var(--channel-on-strong);box-shadow:0 2px 8px #00163212}
+.studio .channel-tabs button.active .icon{color:inherit}
+.channel-toolbar #comm-order{background:var(--solid);border-color:var(--channel-edge);flex-shrink:0}
+.comm-channel-label{display:inline-flex;align-items:center;gap:5px;color:var(--channel-ink);font-weight:600}
+.comm-channel-label .icon{width:13px;height:13px;flex-shrink:0}
+.studio .communication-hub .thread.active{background:var(--channel-surface);border-left-color:var(--channel-accent)}
+.communication-hub .thread{transition:background-color 220ms ease,border-color 220ms ease}
+.communication-hub .thread:hover{background:color-mix(in srgb,var(--channel-surface) 55%,var(--panel))}
+.communication-hub .conversation-head{background:var(--channel-surface);border-bottom-color:var(--channel-edge);box-shadow:inset 3px 0 var(--channel-accent)}
+.communication-hub .conversation-head p{display:flex;align-items:center;flex-wrap:wrap;gap:3px}
+.communication-hub .conversation-head .linkbtn{color:var(--channel-ink)}
+.communication-hub .messages{background:color-mix(in srgb,var(--channel-surface) 34%,var(--solid))}
+.studio .communication-hub .message .bubble{background:var(--channel-incoming);border-color:var(--channel-edge);color:var(--text);box-shadow:0 2px 6px #00163205}
+.studio .communication-hub .message.out .bubble{background:var(--channel-strong);border:1px solid var(--channel-strong);color:var(--channel-on-strong)}
+.communication-hub .composer{border-top-color:var(--channel-edge)}
+.communication-hub .composer textarea:focus-visible{outline:2px solid var(--channel-accent);outline-offset:2px}
+@media(max-width:600px){.studio .channel-tabs button{padding:9px 8px;gap:5px}.channel-toolbar .channel-tabs{scrollbar-width:thin}.channel-toolbar #comm-order{max-width:100%}.communication-hub .conversation-head{flex-wrap:wrap}}

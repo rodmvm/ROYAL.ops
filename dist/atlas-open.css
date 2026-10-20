@@ -1,0 +1,111 @@
+/* A continuous scene behind independent, readable glass instruments. */
+.studio.atlas-workspace{--atlas-glass:#ffffffb8;--atlas-glass-strong:#ffffffe6;--atlas-glass-edge:#ffffffdd;--atlas-glass-shadow:0 12px 40px #1438530d}
+.dark .studio.atlas-workspace{--atlas-glass:#132433a8;--atlas-glass-strong:#132433e6;--atlas-glass-edge:#81b5db30;--atlas-glass-shadow:0 14px 40px #0002}
+.studio.atlas-workspace .main{position:relative;isolation:isolate;min-height:100dvh}
+.studio.atlas-workspace .main>.topbar{position:relative;z-index:6}
+.studio.atlas-workspace .content{height:calc(100dvh - 88px);min-height:570px;max-width:none;display:grid;grid-template-rows:auto minmax(0,1fr);padding-bottom:20px}
+.atlas-workspace .content>.pagehead{position:relative;z-index:2;margin:2px 0 20px;pointer-events:none}
+.atlas-workspace .pagehead>.actions{pointer-events:auto}
+.atlas-workspace .pagehead h1{font-size:27px}
+.atlas-workspace .content>.footnote{display:none}
+.atlas-workspace .shipment-atlas{display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:16px;min-height:0;overflow:visible;background:none;border:0;border-radius:0;box-shadow:none}
+.atlas-workspace .atlas-toolbar{position:relative;z-index:2;justify-self:start;max-width:100%;border:1px solid var(--atlas-glass-edge);border-radius:15px;padding:7px 10px;background:var(--atlas-glass);box-shadow:var(--atlas-glass-shadow);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%)}
+.atlas-workspace .atlas-layout{grid-template-columns:220px minmax(0,1fr);gap:22px;min-height:0;pointer-events:none}
+.atlas-workspace .atlas-list,.atlas-workspace .atlas-detail{position:relative;z-index:2;background:var(--atlas-glass);border:1px solid var(--atlas-glass-edge);border-radius:20px;box-shadow:inset 0 1px 0 #ffffff1c,var(--atlas-glass-shadow);backdrop-filter:blur(36px) saturate(150%);-webkit-backdrop-filter:blur(36px) saturate(150%);pointer-events:auto}
+.atlas-workspace .atlas-list{min-height:0;overflow:hidden}
+.atlas-workspace .atlas-list-heading{padding:17px 13px 12px}
+.atlas-workspace .atlas-route-list{display:block;max-height:none;min-height:0;overflow:auto;padding:0 8px 8px;flex:1}
+.atlas-workspace .atlas-route-card{width:100%;min-width:0;padding:12px 10px;background:var(--atlas-glass-strong);margin:0 0 7px}
+.atlas-workspace .atlas-route-card.selected{background:var(--bluebg);box-shadow:inset 0 0 0 1px #1d70b733}
+.atlas-workspace .atlas-search{background:var(--atlas-glass-strong)}
+.atlas-workspace .atlas-list-footer{padding:10px 13px;background:transparent}
+.atlas-workspace .atlas-right{display:flex;align-items:flex-end;min-height:0;pointer-events:none}
+.atlas-workspace .atlas-detail{width:min(100%,520px);max-height:100%;overflow:auto;margin:0 53px 32px auto;padding:16px 18px}
+.atlas-workspace .atlas-detail-top h2{font-size:15px}
+.atlas-workspace .atlas-detail-route{padding:11px 0;grid-template-columns:1fr 60px 1fr}
+.atlas-workspace .atlas-detail-route small{margin-bottom:3px}
+.atlas-workspace .atlas-detail-connector .icon{background:none}
+.atlas-workspace .atlas-detail-meta{padding:11px 0;grid-template-columns:1fr 1fr 1.1fr;gap:10px}
+.atlas-workspace .atlas-detail-deadline{grid-column:auto}
+.atlas-workspace .atlas-detail-meta small{margin-bottom:4px}
+.atlas-workspace .atlas-detail-actions .btn{backdrop-filter:blur(12px)}
+.atlas-workspace .atlas-footnote{position:relative;z-index:2;max-width:760px;justify-self:end;border:0;border-radius:10px;padding:8px 12px;background:var(--atlas-glass);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);pointer-events:auto;font-size:8px}
+.atlas-workspace .atlas-stage{--atlas-globe-y:48%;position:absolute;inset:0;height:100%;width:100%;z-index:0;isolation:auto;overflow:hidden;pointer-events:auto;background:radial-gradient(ellipse at 65% 48%,#123e5b 0,#0a2439 36%,#0a1b2b 76%);border-radius:0}
+body:not(.dark) .atlas-workspace .atlas-stage{background:radial-gradient(ellipse at 65% 48%,#ffffff 0,#e2eef6 42%,#f1f5f9 79%)}
+.atlas-workspace .atlas-stage:before{z-index:0;opacity:.32}
+.atlas-workspace .atlas-map-heading{top:170px;left:auto;right:24px;text-align:right}
+.atlas-workspace .atlas-map-heading>span{justify-content:flex-end;font-size:10px}
+.atlas-workspace .atlas-map-heading small{font-size:6px}
+.atlas-workspace .atlas-map-top-actions{right:22px;top:211px}
+.atlas-workspace .atlas-map-controls{right:22px;top:calc(50% - 50px);bottom:auto;gap:7px}
+.atlas-workspace .atlas-map-top-actions button,.atlas-workspace .atlas-map-controls button{background:var(--atlas-glass);border-color:var(--atlas-glass-edge);backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);border-radius:10px;width:32px;height:32px}
+.atlas-workspace .atlas-orientation{left:280px;bottom:93px}
+.atlas-workspace .atlas-orientation small{max-width:170px;line-height:1.6}
+.atlas-workspace .atlas-route-legend{left:280px;bottom:57px;right:auto;gap:14px;border:1px solid var(--atlas-glass-edge);border-radius:30px;padding:8px 12px;background:var(--atlas-glass);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px)}
+.atlas-workspace .atlas-map-status{top:250px;bottom:auto;left:280px;right:90px}
+.atlas-workspace .atlas-stage:fullscreen{position:fixed;inset:0;height:100vh;width:100vw;z-index:50}
+.atlas-workspace .atlas-stage:fullscreen .atlas-map-heading{top:24px;left:30px;right:auto;text-align:left}
+.atlas-workspace .atlas-stage:fullscreen .atlas-map-top-actions{top:24px;right:25px}
+.atlas-workspace .atlas-stage:fullscreen .atlas-orientation{left:30px;bottom:88px}
+.atlas-workspace .atlas-stage:fullscreen .atlas-route-legend{left:30px;bottom:40px}
+/* Original artwork: Royal's waves, steel-blue freight and a lime connection. */
+.studio .pulse-card{background:#001632;isolation:isolate;min-height:275px}
+.pulse-artwork{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none}
+.studio .pulse-card:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#001632ed 0,#001632ca 42%,#00163210 100%);pointer-events:none}
+.studio .pulse-card .mode-bars{border-radius:12px;padding:10px 12px 1px;margin:0 -2px;background:#00163255;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.studio .pulse-card h2{max-width:76%;text-shadow:0 2px 15px #001632}
+.studio .pulse-bottom{position:relative;z-index:1}
+@media(max-width:1280px){
+  .atlas-workspace .atlas-layout{grid-template-columns:190px minmax(0,1fr);gap:16px}
+  .atlas-workspace .atlas-detail{margin-right:46px;max-width:440px;padding:14px}
+  .atlas-workspace .atlas-detail-meta{grid-template-columns:1fr 1fr}
+  .atlas-workspace .atlas-detail-deadline{grid-column:1/-1}
+  .atlas-workspace .atlas-orientation,.atlas-workspace .atlas-route-legend{left:246px}
+}
+@media(min-width:801px) and (max-width:1050px){
+  .studio.atlas-workspace.with-copilot .atlas-layout{grid-template-columns:190px minmax(0,1fr)}
+  .studio.atlas-workspace.with-copilot .atlas-route-list{display:block;max-height:none;overflow:auto;padding:0 8px 8px}
+  .studio.atlas-workspace.with-copilot .atlas-route-card{width:100%;min-width:0;margin-bottom:7px}
+  .studio.atlas-workspace.with-copilot .atlas-list-footer{display:flex}
+}
+@media(max-width:1000px){.studio.atlas-workspace.with-copilot .content,.studio.atlas-workspace.with-copilot .topbar{padding-right:32px}.studio.atlas-workspace .content{height:calc(100dvh - 78px)}}
+@media(max-width:800px){
+  .studio.atlas-workspace .content{display:block;height:auto;min-height:calc(100dvh - 78px)}
+  .atlas-workspace .shipment-atlas{display:flex;flex-direction:column;gap:14px}
+  .atlas-workspace .atlas-layout,.studio.atlas-workspace.with-copilot .atlas-layout{display:flex;flex-direction:column;padding-top:340px;gap:14px}
+  .atlas-workspace .atlas-list{height:238px;max-height:238px;flex-shrink:0}
+  .atlas-workspace .atlas-list-heading{padding:13px}
+  .atlas-workspace .atlas-list-heading h2{margin-bottom:9px}
+  .atlas-workspace .atlas-route-list,.studio.atlas-workspace.with-copilot .atlas-route-list{display:flex;gap:8px;overflow:auto;padding:0 10px 12px;max-height:none}
+  .atlas-workspace .atlas-route-card,.studio.atlas-workspace.with-copilot .atlas-route-card{width:185px;min-width:185px;margin:0}
+  .atlas-workspace .atlas-list-footer{display:none!important}
+  .atlas-workspace .atlas-detail{width:100%;max-width:none;margin:0;padding:18px}
+  .atlas-workspace .atlas-right{display:block}
+  .atlas-workspace .atlas-stage{--atlas-globe-y:445px;height:100%}
+  .atlas-workspace .atlas-map-heading{top:248px;left:32px;right:auto;text-align:left}
+  .atlas-workspace .atlas-map-heading>span{justify-content:flex-start}
+  .atlas-workspace .atlas-map-top-actions{top:250px;right:22px}
+  .atlas-workspace .atlas-map-controls{top:328px}
+  .atlas-workspace .atlas-orientation{top:535px;bottom:auto;left:32px}
+  .atlas-workspace .atlas-route-legend{top:587px;bottom:auto;left:32px}
+  .atlas-workspace .atlas-footnote{width:100%;box-sizing:border-box;max-width:none}
+}
+@media(max-width:600px){
+  .studio.atlas-workspace.with-copilot .content,.studio.atlas-workspace.with-copilot .topbar{padding-right:15px}
+  .atlas-workspace .content>.pagehead{margin-bottom:16px}
+  .atlas-workspace .pagehead h1{font-size:26px;max-width:320px}
+  .atlas-workspace .atlas-toolbar{gap:8px;padding:7px 9px;width:100%}
+  .atlas-workspace .atlas-layout,.studio.atlas-workspace.with-copilot .atlas-layout{padding-top:330px}
+  .atlas-workspace .atlas-stage{--atlas-globe-y:510px}
+  .atlas-workspace .atlas-map-heading{top:378px;left:20px}
+  .atlas-workspace .atlas-map-heading small{font-size:6px}
+  .atlas-workspace .atlas-map-top-actions{top:375px;right:20px}
+  .atlas-workspace .atlas-map-controls{top:428px;right:20px}
+  .atlas-workspace .atlas-orientation{top:610px;left:20px}
+  .atlas-workspace .atlas-route-legend{top:660px;left:20px}
+  .atlas-workspace .atlas-detail-route{grid-template-columns:1fr 45px 1fr}
+  .atlas-workspace .atlas-detail-actions .btn.small{font-size:9px!important}
+  .atlas-workspace .atlas-footnote{font-size:8px}
+}
+@media(prefers-reduced-transparency:reduce){.studio.atlas-workspace{--atlas-glass:#f8fbff;--atlas-glass-strong:#fff}.dark .studio.atlas-workspace{--atlas-glass:#132433;--atlas-glass-strong:#132433}}
+@supports not (backdrop-filter:blur(1px)){.studio.atlas-workspace{--atlas-glass:#f8fbfff5}.dark .studio.atlas-workspace{--atlas-glass:#132433f5}}

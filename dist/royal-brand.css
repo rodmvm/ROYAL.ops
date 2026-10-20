@@ -1,0 +1,111 @@
+/* Brand values sourced from Royal Dynamic's public website stylesheet.
+   Readable semantic variants support operational alerts in both themes. */
+:root{
+  --royal-midnight:#001632;
+  --royal-navy:#0a1b2b;
+  --royal-dark:#0b1321;
+  --royal-surface:#132433;
+  --royal-steel:#1d70b7;
+  --royal-lime:#8bc53f;
+  --royal-slate:#546681;
+  --royal-magenta:#90278e;
+  --royal-orange:#ffb607;
+  --royal-red:#ec1c24;
+  --bg:#f1f5f9;
+  --panel:#fffffff0;
+  --solid:#fff;
+  --text:var(--royal-midnight);
+  --muted:var(--royal-slate);
+  --line:#dfe7ef;
+  --blue:var(--royal-steel);
+  --bluebg:#e8f1fa;
+  --green:#446720;
+  --greenbg:#edf5e2;
+  --amber:#8a5a00;
+  --amberbg:#fff3d3;
+  --red:#b92129;
+  --redbg:#fcecef;
+  --shadow:0 3px 3px #00163203,0 7px 24px #00163206;
+}
+body.dark{
+  --bg:var(--royal-navy);
+  --panel:#132433f5;
+  --solid:var(--royal-surface);
+  --text:#f5f7fd;
+  --muted:#a6b7c9;
+  --line:#2b4156;
+  --blue:#85bceb;
+  --bluebg:#193c5d;
+  --green:#b5db7e;
+  --greenbg:#263d27;
+  --amber:#ffcc57;
+  --amberbg:#413723;
+  --red:#ff959b;
+  --redbg:#442a39;
+  --shadow:0 3px 25px #00000016;
+}
+.studio .rail-brand{color:var(--royal-steel)}
+.dark .studio .rail-brand{color:#8dbde5}
+.studio .rail-profile .avatar{background:var(--bluebg);color:var(--blue)}
+.studio .nav button.active,.studio .rail-settings.active{background:var(--bluebg);color:var(--blue)}
+.studio .nav button.copilot-active{color:var(--royal-magenta)}
+.dark .studio .nav button.copilot-active{color:#db9bd9}
+.studio .nav button:hover,.studio .rail-settings:hover{background:var(--bluebg);color:var(--blue)}
+.studio .btn.primary{background:var(--royal-lime);border-color:var(--royal-lime);color:var(--royal-midnight);box-shadow:inset 0 1px 0 #ffffff30,0 4px 10px #00163215}
+.studio .btn.primary:hover{background:#96cf4a;border-color:#96cf4a}
+.studio .greeting-spark{color:var(--royal-steel)}
+.dark .studio .greeting-spark{color:var(--royal-lime)}
+.studio .kpi-icon{background:var(--bluebg);color:var(--blue)}
+.studio .kpi-icon.amber{background:var(--amberbg);color:var(--amber)}
+.studio .kpi-icon.red{background:var(--redbg);color:var(--red)}
+.studio .pulse-card{background:linear-gradient(125deg,var(--royal-midnight),#113b5c);border-color:#1d70b744;color:white}
+.studio .pulse-header{color:#f5f7fd}
+.studio .pulse-header .badge{background:#ffffff1a;color:#f5f7fd}
+.studio .pulse-card>p,.studio .pulse-bottom{color:#cbdbea}
+.studio .mode-bars>div>span{color:#f5f7fd}
+.studio .mode-bars>div>div{background:#ffffff1c}
+.studio .mode-bars i{background:var(--royal-lime)}
+.studio .pulse-bottom button{background:var(--royal-lime);color:var(--royal-midnight)}
+.studio .pulse-decoration{stroke:#4785b544}
+.studio .fresh-gauge:before{background:conic-gradient(from 270deg,var(--royal-steel) 0deg,var(--royal-steel) var(--progress),var(--bluebg) var(--progress),var(--bluebg) 180deg,transparent 180deg)}
+.dark .studio .fresh-gauge:before{background:conic-gradient(from 270deg,#68a8dc 0deg,#68a8dc var(--progress),var(--bluebg) var(--progress),var(--bluebg) 180deg,transparent 180deg)}
+.studio .insight-ask{background:var(--bluebg);color:var(--blue)}
+.studio .mini-assist{background:#f6eaf5;color:var(--royal-magenta)}
+.dark .studio .mini-assist{background:#432947;color:#e7a8e4}
+.studio .channel-dots>span{background:var(--bluebg);color:var(--blue)}
+.studio .ai-orb{background:radial-gradient(circle at 33% 25%,#dfa1d7,#b353ab 38%,var(--royal-magenta) 68%,#c176bd);box-shadow:0 3px 10px #90278e35,inset 0 1px 3px #ffe6ff8a}
+.studio .ai-orb.small{box-shadow:0 2px 7px #90278e30}
+.studio .ai-source{color:var(--blue);background:var(--bluebg)}
+.studio .ai-prompts .icon{color:var(--blue)}
+.studio .ai-prompts button:hover{border-color:var(--blue);background:var(--bluebg)}
+.studio .ai-user-message{background:var(--royal-midnight);color:#fff}
+.dark .studio .ai-user-message{background:#1b4568;color:#fff}
+.studio .copilot-composer form>button{background:var(--royal-midnight);color:white}
+.dark .studio .copilot-composer form>button{background:var(--royal-lime);color:var(--royal-midnight)}
+.studio .ai-result-chart i{background:var(--bluebg)}
+.studio .ai-result-chart em{background:var(--royal-steel)}
+.studio .badge:not(.red):not(.amber):not(.green):not(.neutral){color:var(--blue);background:var(--bluebg)}
+.studio .square,.studio .roundicon.blue{color:var(--blue);background:var(--bluebg)}
+.studio .switch.on{background:var(--royal-steel)}
+.studio .progressbar span{background:var(--royal-steel)}
+.studio .document-preview h2{color:var(--royal-midnight)}
+.studio .routevisual .route-line{background:linear-gradient(90deg,var(--royal-steel) 65%,var(--line) 65%)}
+body{background:var(--bg);color:var(--text)}
+/* Workflow dialogs are mounted outside the dashboard shell. */
+.btn.primary{background:var(--royal-lime);border-color:var(--royal-lime);color:var(--royal-midnight);box-shadow:0 4px 10px #00163215}
+.document-preview h2{color:var(--royal-midnight)}
+.routevisual .route-line{background:linear-gradient(90deg,var(--royal-steel) 65%,var(--line) 65%)}
+/* Use the owner's official artwork, preserving its proportions and colors. */
+.studio .rail-brand .official-mark{display:block;width:34px;height:34px;object-fit:contain;flex-shrink:0}
+.studio .rail-brand .official-wordmark{display:none}
+.studio.rail-expanded .rail-brand{justify-content:center;flex-direction:column;padding:0;margin:7px auto 33px;width:105.96px;height:41px;min-height:41px;flex-shrink:0}
+.studio.rail-expanded .rail-brand .official-mark{display:none}
+.studio.rail-expanded .rail-brand .official-wordmark{display:block;width:100%;height:auto;object-fit:contain}
+@media(min-width:601px) and (max-width:1280px){.studio.rail-expanded .rail-brand{margin-left:auto;margin-right:auto}}
+.studio .workspace-brand{display:inline-flex;align-items:center}
+.studio .workspace-brand img{display:block;width:120px;height:42px;object-fit:contain}
+.studio .rail-brand,.dark .studio.rail-expanded .rail-brand{background:transparent}
+.dark .studio .workspace-brand{background:transparent}
+.dark .studio .workspace-brand{padding:3px 8px}
+@media(max-width:600px){.studio .rail-brand{display:none!important}}
+
