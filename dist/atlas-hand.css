@@ -1,0 +1,32 @@
+/* Route lookup follows the operator's dominant hand; text never reverses. */
+#app .atlas-hand-control{display:inline-flex;align-items:center;gap:3px;margin-left:auto;padding:3px;background:var(--atlas-glass-strong,var(--panel));border:1px solid var(--atlas-glass-edge,var(--line));border-radius:10px;white-space:nowrap;flex-shrink:0}
+#app .atlas-hand-control>span{padding:0 7px;color:var(--muted);font-size:10px}
+#app .atlas-hand-control button{min-height:31px;padding:6px 10px;border-radius:7px;color:var(--muted);font-size:10px;transition:background-color 180ms ease,color 180ms ease}
+#app .atlas-hand-control button.active{background:var(--bluebg);color:var(--blue);font-weight:700}
+#app .atlas-hand-control button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* Desktop and landscape tablets have a genuine side-by-side comparison. */
+@media(min-width:1200px){
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-layout{grid-template-columns:minmax(0,1fr) 220px}
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-right{grid-column:1;grid-row:1}
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-list{grid-column:2;grid-row:1;border-left:1px solid var(--atlas-glass-edge,var(--line));border-right:0}
+}
+@media(min-width:1200px) and (max-width:1280px){#app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-layout{grid-template-columns:minmax(0,1fr) 190px}}
+@media(min-width:1024px) and (max-width:1199px) and (orientation:landscape){
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-layout{grid-template-columns:minmax(0,1fr) 220px}
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-stage{grid-column:1;grid-row:1}
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-list{grid-column:2;grid-row:1;border-left:1px solid var(--atlas-glass-edge,var(--line));border-right:0}
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=right] .atlas-detail{grid-column:1/-1;grid-row:2}
+}
+/* Portrait tablets stack the globe and routes, but keep the search on the chosen side. */
+@media(min-width:768px) and (max-width:1199px) and (orientation:portrait){
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=left] .atlas-list-heading .atlas-search{grid-column:1;grid-row:1}
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=left] .atlas-list-heading h2{grid-column:2;grid-row:1}
+}
+@media(max-width:767px){
+ #app .atlas-workspace .atlas-hand-control{order:1;margin-left:0}
+ #app .atlas-workspace .atlas-delivered-toggle{order:2;margin-left:auto}
+ #app .atlas-workspace .atlas-list-heading .atlas-search{width:min(100%,300px);justify-self:end}
+ #app .atlas-workspace .shipment-atlas[data-atlas-hand=left] .atlas-list-heading .atlas-search{justify-self:start}
+}
+@media(prefers-reduced-motion:reduce){#app .atlas-hand-control button{transition:none}}
