@@ -52,3 +52,8 @@
  #app .atlas-workspace .atlas-list-heading .atlas-search{grid-column:1/-1;grid-row:2;width:100%}
 }
 @media(prefers-reduced-motion:reduce){#app .atlas-panel-move,#app .atlas-panel-resize{transition:none}}
+
+#app .atlas-spin-toggle{display:inline-flex;align-items:center;gap:6px;min-height:31px;padding:6px 9px;border:1px solid var(--atlas-glass-edge,var(--line));border-radius:9px;background:var(--atlas-glass-strong,var(--panel));color:var(--blue);font-size:10px;white-space:nowrap}
+#app .atlas-spin-toggle .icon{width:13px;height:13px}
+#app .atlas-spin-toggle:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media(max-width:1023px){#app .atlas-spin-toggle{min-height:40px}}
