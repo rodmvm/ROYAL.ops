@@ -1,6 +1,6 @@
 /* Quiet, discoverable scrollbars across pages, panels and horizontal lists. */
 :root{--royal-scroll-thumb:rgba(24,87,139,.38);--royal-scroll-thumb-hover:rgba(24,87,139,.7)}
-body.dark{--royal-scroll-thumb:rgba(149,206,239,.48);--royal-scroll-thumb-hover:rgba(177,225,250,.82)}
+html:has(body.dark),body.dark{--royal-scroll-thumb:rgba(149,206,239,.48);--royal-scroll-thumb-hover:rgba(177,225,250,.82)}
 #app .atlas-workspace{--royal-scroll-thumb:rgba(139,199,233,.5);--royal-scroll-thumb-hover:rgba(179,226,250,.84)}
 :where(html,body,#app *,#overlay *){scrollbar-width:thin;scrollbar-color:var(--royal-scroll-thumb) transparent}
 :where(html,body,#app *,#overlay *)::-webkit-scrollbar{width:8px;height:8px}
@@ -11,3 +11,4 @@ body.dark{--royal-scroll-thumb:rgba(149,206,239,.48);--royal-scroll-thumb-hover:
 /* Navigation uses its own compact rail and should remain free of a second visual stripe. */
 #app .studio .nav{scrollbar-width:none}
 #app .studio .nav::-webkit-scrollbar{display:none}
+
