@@ -6,6 +6,8 @@
 'use strict';
 globalThis.RoyalSharpIcons=Object.freeze({
  more:'M2 10h4v4H2zM10 10h4v4h-4zM18 10h4v4h-4z',
+ move:'M12 1 7 6h3v4H6V7L1 12l5 5v-3h4v4H7l5 5 5-5h-3v-4h4v3l5-5-5-5v3h-4V6h3z',
+ resize:'M21 3v7h-2V6.4l-4.6 4.6-1.4-1.4L17.6 5H14V3zM3 21v-7h2v3.6l4.6-4.6 1.4 1.4L6.4 19H10v2zM17 14h4v7h-7v-2h3z',
  grid:'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
  truck:'M2 5h12v3h4l4 5v6h-2a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0H2zm14 5v4h4l-3-4zM6 17a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm11 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z',
  ship:'M8 2h8v3h3v6l3 1-3 8H5l-3-8 3-1V5h3zm-1 5v3l5-2 5 2V7zm-2 6 7-3 7 3-2 5H7zM2 22v-2l5 1 5-1 5 1 5-1v2l-5 1-5-1-5 1z',

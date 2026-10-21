@@ -1,0 +1,54 @@
+/* Adjustable glass instruments float over the globe on wide workspaces. */
+#app .atlas-panel-move,#app .atlas-panel-resize{display:grid;place-items:center;width:27px;height:27px;border:1px solid var(--atlas-glass-edge,var(--line));border-radius:8px;background:var(--atlas-glass-strong,var(--panel));color:var(--muted);font:700 15px/1 'DM Sans',sans-serif;touch-action:none;user-select:none;z-index:4}
+#app .atlas-panel-move .icon,#app .atlas-panel-resize .icon{width:15px;height:15px}
+#app .atlas-panel-move{position:absolute;top:10px;right:10px;cursor:grab}
+#app .atlas-panel-move:active{cursor:grabbing}
+#app .atlas-panel-resize{position:absolute;right:7px;bottom:7px;width:23px;height:23px;cursor:nwse-resize;font-size:15px}
+#app .atlas-panel-move:hover,#app .atlas-panel-resize:hover{color:var(--blue);border-color:var(--blue)}
+#app .atlas-panel-move:focus-visible,#app .atlas-panel-resize:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#app .atlas-panel-reset{display:inline-flex;align-items:center;gap:5px;min-height:31px;padding:5px 8px;border-radius:8px;color:var(--muted);font-size:9px;white-space:nowrap}
+#app .atlas-panel-reset:hover{background:var(--atlas-glass-strong,var(--panel));color:var(--blue)}
+#app .atlas-panel-reset:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#app .atlas-panel-reset .icon{width:13px;height:13px}
+#app .atlas-workspace .atlas-list-heading{padding-right:45px}
+#app .atlas-workspace .atlas-detail-top{padding-right:35px}
+#app .atlas-workspace .atlas-list,#app .atlas-workspace .atlas-detail{box-sizing:border-box}
+@media(min-width:1024px){
+ #app .atlas-workspace .atlas-layout{position:static;display:block;min-height:440px;pointer-events:none}
+ #app .atlas-workspace .atlas-list,#app .atlas-workspace .atlas-detail{position:absolute;inset:auto;z-index:4;max-width:none;max-height:none;margin:0;overflow:hidden;pointer-events:auto}
+ #app .atlas-workspace .atlas-list{display:flex;flex-direction:column}
+ #app .atlas-workspace .atlas-detail{overflow:auto}
+ #app .atlas-workspace .atlas-right{display:contents}
+ #app .atlas-workspace .atlas-stage{position:absolute;inset:0;width:100%;height:100%;margin:0;grid-column:auto;grid-row:auto}
+ #app .atlas-workspace .atlas-route-list{min-height:0;overflow-y:auto}
+ #app .atlas-workspace .atlas-list-footer{display:flex}
+ #app .atlas-workspace .atlas-list-heading{display:block}
+ #app .atlas-workspace .atlas-list-heading h2{margin-bottom:12px}
+}
+@media(min-width:1024px) and (max-width:1199px){
+ #app .atlas-workspace .atlas-layout{height:clamp(440px,calc(100dvh - 250px),650px)}
+ #app .atlas-workspace .atlas-stage{z-index:0;pointer-events:auto}
+ #app .atlas-workspace .atlas-detail{grid-column:auto;grid-row:auto}
+}
+@media(max-width:1023px){
+ #app .atlas-workspace .atlas-panel-move{position:static;flex:none;cursor:pointer;font-size:16px}
+ #app .atlas-workspace .atlas-list-heading{position:relative;padding-right:16px}
+ #app .atlas-workspace .atlas-list-heading .atlas-panel-move{grid-column:3;grid-row:1}
+ #app .atlas-workspace .atlas-list-heading{grid-template-columns:minmax(0,1fr) minmax(140px,1fr) auto}
+ #app .atlas-workspace .atlas-detail{position:relative;overflow:auto}
+ #app .atlas-workspace .atlas-detail .atlas-panel-move{position:absolute;top:12px;right:12px}
+ #app .atlas-workspace .atlas-list{position:relative;max-height:none}
+ #app .atlas-workspace .atlas-panel-resize{cursor:ns-resize}
+ #app .atlas-workspace .atlas-list .atlas-panel-resize{bottom:5px}
+ #app .atlas-workspace .atlas-detail .atlas-panel-resize{bottom:5px}
+ #app .atlas-workspace .shipment-atlas[data-panel-order=detail-first] .atlas-detail{grid-row:2}
+ #app .atlas-workspace .shipment-atlas[data-panel-order=detail-first] .atlas-list{grid-row:3}
+}
+@media(max-width:767px){
+ #app .atlas-panel-reset span{display:none}
+ #app .atlas-workspace .atlas-list-heading{grid-template-columns:minmax(0,1fr) auto}
+ #app .atlas-workspace .atlas-list-heading h2{grid-column:1;grid-row:1}
+ #app .atlas-workspace .atlas-list-heading .atlas-panel-move{grid-column:2;grid-row:1}
+ #app .atlas-workspace .atlas-list-heading .atlas-search{grid-column:1/-1;grid-row:2;width:100%}
+}
+@media(prefers-reduced-motion:reduce){#app .atlas-panel-move,#app .atlas-panel-resize{transition:none}}
