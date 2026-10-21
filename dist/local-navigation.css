@@ -7,9 +7,11 @@
 #app :is(.atlas-view-switch,.atlas-mode-tabs).local-sliding-tabs>button.active{background:transparent}
 #app .channel-tabs.local-sliding-tabs>.local-tab-indicator{top:0;bottom:0;height:auto;border-radius:9px;background:var(--channel-strong)}
 #app .channel-tabs.local-sliding-tabs>button.active{background:transparent;border-color:transparent;box-shadow:none}
-#app .studio .copilot-slot .copilot-panel{opacity:1;transform:translateX(28px);transition:transform 220ms cubic-bezier(.2,.7,.2,1)}
+#app .studio .copilot-slot .copilot-panel{opacity:0;transform:translateX(12px);transition:opacity 170ms ease-out,transform 190ms cubic-bezier(.2,.7,.2,1);transition-delay:0s}
 #app .studio.with-copilot .copilot-slot .copilot-panel{opacity:1;transform:translateX(0);transition-delay:0s}
 #app .studio.shell{transition-duration:240ms}
-#app .studio .copilot-slot{transition:visibility 0s 240ms}
+#app .studio .copilot-slot{transition:visibility 0s 190ms}
 #app .studio.with-copilot .copilot-slot{transition-delay:0s}
-@media(prefers-reduced-motion:reduce){#app .studio .copilot-slot .copilot-panel{transition:none!important;transform:none}}
+@media(max-width:1439px){#app .studio .copilot-backdrop{display:block;position:fixed;inset:0;background:#00163255;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity 170ms ease-out}#app .studio.with-copilot .copilot-backdrop{opacity:1;pointer-events:auto}}
+@media(prefers-reduced-motion:reduce){#app .studio .copilot-slot .copilot-panel,#app .studio .copilot-backdrop{transition:none!important}#app .studio .copilot-slot .copilot-panel{transform:none}}
+
