@@ -3,6 +3,7 @@
 html:has(body.dark),body.dark{--royal-scroll-thumb:rgba(149,206,239,.48);--royal-scroll-thumb-hover:rgba(177,225,250,.82)}
 #app .atlas-workspace{--royal-scroll-thumb:rgba(139,199,233,.5);--royal-scroll-thumb-hover:rgba(179,226,250,.84)}
 :where(html,body,#app *,#overlay *){scrollbar-width:thin;scrollbar-color:var(--royal-scroll-thumb) transparent}
+#app .atlas-route-list,#app .channel-toolbar .channel-tabs{scrollbar-color:var(--royal-scroll-thumb) transparent}
 :where(html,body,#app *,#overlay *)::-webkit-scrollbar{width:8px;height:8px}
 :where(html,body,#app *,#overlay *)::-webkit-scrollbar-track{background:transparent}
 :where(html,body,#app *,#overlay *)::-webkit-scrollbar-thumb{background:var(--royal-scroll-thumb);background-clip:padding-box;border:2px solid transparent;border-radius:999px;min-height:32px}
