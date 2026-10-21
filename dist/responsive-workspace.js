@@ -31,7 +31,8 @@ function enhanceResponsiveContent(){
  syncResponsiveWorkspace();
 }
 function mobileMoreMenu(){
- openOverlay(`${modalhead(tr('More from your workspace','Más de tu espacio'))}<div class="modalbody"><p class="responsive-hint">${tr('Your documents, automation rules and workspace preferences.','Tus documentos, reglas de automatización y preferencias de trabajo.')}</p><div class="more-grid">${[['documents','file'],['automations','bolt'],['settings','settings']].map(([key,ic])=>`<button data-nav="${key}">${icon(ic)}<span>${tr(...names[key])}</span></button>`).join('')}<button data-responsive="assistant">${icon('spark')}<span>Royal Copilot</span></button></div></div><div class="modalfoot">${btn(tr('Done','Listo'),'data-close','primary','check')}</div>`,true);
+ openOverlay(`<div class="modalhead"><h2 id="workspace-more-title">${tr('More from your workspace','Más de tu espacio')}</h2></div><div class="modalbody"><p class="responsive-hint">${tr('Your documents, automation rules and workspace preferences.','Tus documentos, reglas de automatización y preferencias de trabajo.')}</p><div class="more-grid">${[['documents','file'],['automations','bolt'],['settings','settings']].map(([key,ic])=>`<button data-nav="${key}"><span class="more-icon">${icon(ic)}</span><span>${tr(...names[key])}</span></button>`).join('')}<button data-responsive="assistant"><span class="more-icon">${icon('spark')}</span><span>Royal Copilot</span></button></div></div><div class="modalfoot">${btn(tr('Done','Listo'),'data-close','primary','check')}</div>`,true);
+ const dialog=document.querySelector('#overlay .modal');if(dialog){dialog.classList.add('workspace-more-dialog');dialog.setAttribute('aria-labelledby','workspace-more-title');dialog.removeAttribute('aria-label')}
 }
 document.addEventListener('click',e=>{
  const target=e.target.closest('button,[data-thread]');if(!target)return;
