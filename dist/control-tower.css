@@ -1,0 +1,82 @@
+.tower-workspace{--tower-stage-0:#e8b34e;--tower-stage-1:#8bc53f;--tower-stage-2:#1d70b7;--tower-stage-3:#71b4db;--tower-stage-4:#8d81c5;--tower-stage-5:#58a792}
+#app .tower-workspace .main{position:relative;isolation:isolate;background:radial-gradient(ellipse at 80% 4%,#1d70b716,transparent 32%),radial-gradient(ellipse at 8% 38%,#8bc53f0d,transparent 28%)}
+#app .tower-workspace .main:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 88% 7%,#1d70b722,transparent 23%),radial-gradient(ellipse at 62% 29%,#8bc53f12,transparent 20%),url('assets/control-tower-waves.svg') right top/1100px 720px no-repeat;opacity:.7}
+.dark #app .tower-workspace .main{background:radial-gradient(ellipse at 80% 4%,#1d70b72b,transparent 35%),radial-gradient(ellipse at 8% 38%,#8bc53f0b,transparent 28%)}
+#app .tower-analytics{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+#app .tower-card{min-width:0;border:1px solid var(--line);border-radius:21px;background:color-mix(in srgb,var(--solid) 82%,transparent);box-shadow:var(--shadow);backdrop-filter:blur(26px) saturate(130%);-webkit-backdrop-filter:blur(26px) saturate(130%);overflow:hidden}
+#app .tower-card>header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:20px 22px 0}
+#app .tower-card h2{font:700 14px 'Manrope',sans-serif;margin:6px 0 0;letter-spacing:-.2px}
+#app .tower-kicker{font-size:8px;font-weight:650;letter-spacing:1.3px;color:var(--muted)}
+#app .tower-range{display:flex;gap:3px;background:var(--bg);padding:3px;border:1px solid var(--line);border-radius:9px}
+#app .tower-range button{padding:5px 9px;font-size:10px;border-radius:6px;color:var(--muted)}
+#app .tower-range button[aria-pressed=true]{background:var(--bluebg);color:var(--blue);font-weight:700}
+#app .tower-trend-total{display:flex;align-items:center;gap:12px;padding:17px 22px 5px}
+#app .tower-trend-total>strong{font:750 34px 'Manrope',sans-serif;letter-spacing:-1.4px}
+#app .tower-trend-total>span{font-size:10px;color:var(--muted);line-height:1.5}
+#app .tower-trend-total small{display:block;font-size:8px;margin-top:3px}
+#app .tower-trend-total .tower-trend-rate{margin-left:auto;font-size:20px;font-weight:650;color:var(--blue);text-align:right}
+#app .tower-trend-rate small{font-size:8px;color:var(--muted);font-weight:400}
+#app .tower-line-chart{display:block;width:calc(100% - 28px);height:auto;max-height:180px;margin:0 14px;overflow:visible}
+.tower-chart-grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 5}
+.tower-chart-text{font:9px 'DM Sans',sans-serif;fill:var(--muted)}
+.tower-chart-line{fill:none;stroke:var(--blue);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.tower-chart-point{fill:var(--solid);stroke:var(--blue);stroke-width:2}
+#app .tower-chart-caption{display:flex;justify-content:space-between;gap:10px;padding:0 22px 15px;font-size:8px;color:var(--muted)}
+#app .tower-chart-caption>span:first-child{display:flex;align-items:center;gap:5px}
+#app .tower-chart-caption i{width:12px;height:2px;background:var(--blue)}
+#app .tower-stage-strip{border-top:1px solid var(--line);padding:13px 22px 17px}
+#app .tower-strip-heading{display:flex;justify-content:space-between;gap:10px;font-size:9px;font-weight:600}
+#app .tower-strip-heading small{color:var(--muted);font-size:8px;font-weight:400}
+#app .tower-stacked{display:flex;gap:3px;height:5px;margin:10px 0;border-radius:10px;overflow:hidden}
+#app .tower-stacked span{background:var(--stage-color)}
+#app .tower-stage-legend{display:flex;gap:6px 13px;flex-wrap:wrap}
+#app .tower-stage-legend button{display:flex;align-items:center;gap:5px;font-size:8px;color:var(--muted);min-height:20px}
+#app .tower-stage-legend i{width:5px;height:5px;border-radius:50%}
+#app .tower-stage-legend b{color:var(--text);font-size:9px}
+#app .tower-card footer{padding:11px 20px 14px;font-size:8px;line-height:1.6;color:var(--muted);border-top:1px solid var(--line)}
+#app .tower-play{display:grid;place-items:center;flex-shrink:0;width:31px;height:31px;border:1px solid var(--line);border-radius:50%;color:var(--blue);background:var(--bluebg)}
+#app .tower-play .icon{width:13px;height:13px}
+#app .tower-play.playing{background:var(--greenbg);color:var(--green)}
+#app .tower-feed-label{display:flex;align-items:center;gap:6px;padding:14px 22px 6px;color:var(--muted);font-size:8px}
+#app .tower-feed-label>span:last-child{margin-left:auto;color:var(--blue)}
+#app #tower-feed{padding:0 20px}
+#app .tower-feed-event{display:flex;align-items:center;width:100%;gap:10px;text-align:left;padding:12px 0;border-bottom:1px solid var(--line)}
+#app .tower-feed-event:last-child{border-bottom:0}
+#app .tower-feed-event>span:nth-child(2){min-width:0;flex:1}
+#app .tower-feed-event b{font-size:10px;line-height:1.4;display:block;font-weight:600}
+#app .tower-feed-event small{font-size:8px;color:var(--muted);display:block;margin-top:4px}
+#app .tower-feed-event time{font-size:8px;color:var(--muted);flex-shrink:0}
+#app .tower-event-icon{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:9px;background:var(--bluebg);color:var(--blue)}
+#app .tower-event-icon .icon{width:13px;height:13px}
+#app .tower-event-icon.green{background:var(--greenbg);color:var(--green)}
+#app .tower-event-icon.amber{background:var(--amberbg);color:var(--amber)}
+#app .tower-event-icon.purple{background:#6f2da81b;color:#a36bce}
+#app .tower-arrival-summary{padding:15px 22px 0;display:flex;gap:10px;align-items:center}
+#app .tower-arrival-summary strong{font:750 27px 'Manrope',sans-serif;letter-spacing:-.8px}
+#app .tower-arrival-summary span{font-size:10px;color:var(--muted)}
+#app .tower-arrival-bars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;padding:15px 24px 14px;align-items:end}
+#app .tower-arrival-bars button{display:flex;align-items:center;flex-direction:column;gap:6px;color:var(--muted);font-size:9px;border-radius:7px;padding:4px}
+#app .tower-arrival-bars b{color:var(--text);font-size:10px}
+#app .tower-bar-track{height:72px;width:100%;max-width:33px;background:var(--bluebg);border-radius:6px;position:relative;overflow:hidden}
+#app .tower-bar-track i{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,#1d70b7,#6cafd4);border-radius:6px;min-height:2px}
+#app .tower-arrival-bars button:first-child .tower-bar-track i{background:linear-gradient(0deg,#6f9f25,#8bc53f)}
+#app .tower-arrival-bars button:hover{background:var(--bluebg)}
+#app .tower-owners header>.icon{color:var(--muted);width:18px;height:18px}
+#app .tower-owner-list{padding:8px 22px 11px}
+#app .tower-owner-list button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 0}
+#app .tower-owner-avatar{display:grid;place-items:center;width:30px;height:30px;flex-shrink:0;border-radius:50%;background:var(--bluebg);color:var(--blue);font-size:9px;font-weight:700}
+#app .tower-owner-load{flex:1;min-width:0}
+#app .tower-owner-load>span{display:flex;justify-content:space-between;gap:10px;font-size:10px}
+#app .tower-owner-load b{font-weight:600}
+#app .tower-owner-load i{display:block;height:4px;margin-top:8px;border-radius:5px;overflow:hidden;background:var(--bluebg)}
+#app .tower-owner-load em{display:block;height:100%;background:var(--owner-color);border-radius:5px}
+#app .tower-owner-list .icon{width:13px;height:13px;color:var(--muted)}
+.tower-records>button{display:flex;align-items:center;gap:12px;justify-content:space-between;text-align:left;width:100%;padding:15px 0;border-bottom:1px solid var(--line)}
+.tower-records>button>span:first-child{flex:1;min-width:0}
+.tower-records b{display:block;font-size:12px}.tower-records small{display:block;font-size:10px;color:var(--muted);margin-top:5px}.tower-records .icon{width:15px;height:15px}
+#app .tower-card button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+#app .tower-workspace .bento-card,#app .tower-workspace .mini-kpi{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+@media(max-width:1100px){#app .tower-analytics{grid-template-columns:minmax(0,1fr)}#app .tower-activity{grid-row:auto}#app .tower-card>header{padding:18px 18px 0}}
+@media(max-width:767px){#app .tower-analytics{gap:14px}#app .tower-card{border-radius:18px}#app .tower-trend-total{padding:14px 18px 6px;gap:9px}#app .tower-trend-total>strong{font-size:29px}#app .tower-trend-total small{max-width:170px}#app .tower-card h2{font-size:14px}#app .tower-range button{min-height:32px;min-width:34px}#app .tower-stage-legend button{min-height:30px;font-size:9px}#app .tower-feed-event{min-height:64px}#app .tower-feed-event b{font-size:12px}#app .tower-feed-event small,#app .tower-feed-event time{font-size:10px}#app .tower-card footer{font-size:10px}#app .tower-owner-load>span{font-size:12px}#app .tower-owner-list button{min-height:60px}#app .tower-arrival-bars{gap:6px;padding-inline:14px}#app .tower-arrival-bars button{font-size:11px}#app .tower-arrival-summary span{font-size:12px}}
+@media(prefers-reduced-transparency:reduce){#app .tower-card{background:var(--solid);backdrop-filter:none}}
+@media(max-width:767px){.tower-chart-text{font-size:18px}.tower-chart-line{stroke-width:3}.tower-chart-point{r:4.5px}#app .tower-chart-caption{font-size:9px}.tower-records small{overflow-wrap:anywhere}}
