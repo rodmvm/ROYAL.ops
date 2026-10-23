@@ -45,14 +45,34 @@ function applyAtlasPanels(){
   }
   return;
  }
- const area=layout.getBoundingClientRect(),origin=main.getBoundingClientRect(),W=Math.max(1,area.width),H=Math.max(1,area.height);
+ const area=layout.getBoundingClientRect(),origin=main.getBoundingClientRect();
+ // Reserve a separate lane for globe controls, outside draggable glass panels.
+ const W=Math.max(1,area.width-68),H=Math.max(1,area.height),gap=16;
+ main.style.setProperty('--atlas-tools-top',`${area.top-origin.top}px`);
  const listDefaultW=Math.min(W*.3,W<1000?200:220);
- const specs=[['list',list,listDefaultW,H],['detail',detail,Math.min(520,Math.max(300,W-listDefaultW-42)),Math.min(270,H-12)]];
+ const listW=atlasPanelClamp(atlasPanelData.list.w??listDefaultW,170,Math.max(170,W-316));
+ const specs=[['list',list,listW,H],['detail',detail,Math.min(520,Math.max(300,W-listW-gap)),Math.min(340,H-12)]];
+ const boxes={};
  for(const [name,element,defaultW,defaultH] of specs){
   const saved=atlasPanelData[name];const minW=name==='list'?170:300,minH=name==='list'?195:210;
-  const w=atlasPanelClamp(saved.w??defaultW,Math.min(minW,W),W),h=atlasPanelClamp(saved.h??defaultH,Math.min(minH,H),H);
-  const defaultX=name==='list'?(atlasHand==='right'?W-w:0):(atlasHand==='right'?(W-listDefaultW-w)/2:listDefaultW+(W-listDefaultW-w)/2);
-  const x=atlasPanelClamp(saved.x??defaultX,0,W-w),y=atlasPanelClamp(saved.y??(name==='list'?0:H-h-25),0,H-h);
+  const maxW=name==='list'?listW:Math.max(300,W-listW-gap);
+  const w=atlasPanelClamp(name==='list'?listW:(saved.w??defaultW),Math.min(minW,W),Math.min(W,maxW)),h=atlasPanelClamp(saved.h??defaultH,Math.min(minH,H),H);
+  const defaultX=name==='list'?(atlasHand==='right'?W-w:0):(atlasHand==='right'?(W-listW-w)/2:listW+(W-listW-w)/2);
+  let x=atlasPanelClamp(saved.x??defaultX,0,W-w);const y=atlasPanelClamp(saved.y??(name==='list'?0:H-h-25),0,H-h);
+  // Previously saved oversized/overlapping panels must recover at every width.
+  if(name==='detail'){
+   const other=boxes.list;
+   if(x<other.x+other.w+gap&&x+w+gap>other.x&&y<other.y+other.h&&y+h>other.y){
+    x=other.x+other.w+gap+w<=W?other.x+other.w+gap:Math.max(0,other.x-w-gap);
+    // If an old list position leaves no room on either side, anchor it to its chosen edge.
+    if(x<other.x+other.w+gap&&x+w+gap>other.x){
+     other.x=atlasHand==='right'?W-other.w:0;
+     list.style.left=`${area.left-origin.left+other.x}px`;
+     x=atlasHand==='right'?Math.max(0,other.x-w-gap):other.w+gap;
+    }
+   }
+  }
+  boxes[name]={x,y,w,h};
   element.style.left=`${area.left-origin.left+x}px`;element.style.top=`${area.top-origin.top+y}px`;
   element.style.width=`${w}px`;element.style.height=`${h}px`;
  }

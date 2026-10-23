@@ -1,0 +1,43 @@
+/* Each glass surface owns its paint bounds. Backdrop capture must never leak
+   into sibling controls, including after a resize or an overflow scroll. */
+#app .atlas-workspace :is(.atlas-toolbar,.atlas-list,.atlas-detail,.atlas-footnote,.atlas-route-legend),
+#app .studio :is(.sidebar,.copilot-panel,.tower-card,.bento-card,.mini-kpi){
+ isolation:isolate;
+ clip-path:inset(0 round var(--glass-radius,20px));
+}
+#app .atlas-workspace .atlas-toolbar{--glass-radius:15px}
+#app .atlas-workspace .atlas-footnote{--glass-radius:10px}
+#app .atlas-workspace .atlas-route-legend{--glass-radius:30px}
+#app .studio .sidebar{--glass-radius:30px}
+#app .studio .copilot-panel{--glass-radius:22px}
+/* Buttons already sit on a blurred surface. A second capture adds GPU work
+   and can produce rectangular compositor tiles outside the parent. */
+#app .atlas-workspace .atlas-detail-actions .btn,
+#app .studio .pulse-card .mode-bars{backdrop-filter:none;-webkit-backdrop-filter:none}
+#app .atlas-workspace :is(.atlas-map-top-actions,.atlas-map-controls) button{
+ clip-path:inset(0 round 10px);
+ isolation:isolate;
+}
+#app .atlas-workspace :is(.atlas-toolbar,.atlas-list,.atlas-detail) :focus-visible{outline-offset:-3px}
+#app .atlas-workspace .atlas-list-heading{flex:none;min-width:0}
+#app .atlas-workspace .atlas-detail-body{min-width:0;overflow-wrap:anywhere}
+#app .atlas-workspace .atlas-route-list{overscroll-behavior:contain}
+/* Keep scrolling inside the detail body so move/resize controls stay reachable. */
+#app .atlas-workspace .atlas-detail{overflow:hidden;display:flex;flex-direction:column}
+#app .atlas-workspace .atlas-detail-body{overflow:auto;min-height:0;flex:1;padding-bottom:24px;overscroll-behavior:contain}
+@media(min-width:1024px){
+ #app .atlas-workspace .atlas-map-heading{top:var(--atlas-tools-top,240px);left:auto;right:16px;width:68px;text-align:center}
+ #app .atlas-workspace .atlas-map-heading>span{display:block;font-size:9px;line-height:1.4}
+ #app .atlas-workspace .atlas-map-heading small{display:none}
+ #app .atlas-workspace .atlas-map-top-actions{top:calc(var(--atlas-tools-top,240px) + 44px)}
+ #app .atlas-workspace .atlas-map-controls{top:calc(var(--atlas-tools-top,240px) + 118px)}
+}
+@media(max-width:1023px){
+ #app .atlas-workspace .atlas-list{height:auto;max-height:none;min-width:0}
+ #app .atlas-workspace .atlas-route-list{flex:1 1 auto;min-height:0}
+ #app .atlas-workspace .atlas-map-heading{max-width:calc(100% - 140px)}
+}
+@media(prefers-reduced-transparency:reduce){
+ #app .studio :is(.sidebar,.copilot-panel,.tower-card,.bento-card,.mini-kpi),
+ #app .atlas-workspace :is(.atlas-toolbar,.atlas-list,.atlas-detail,.atlas-footnote,.atlas-route-legend){backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--panel)}
+}
